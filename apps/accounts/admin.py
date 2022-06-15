@@ -39,3 +39,7 @@ class UserAdmin(UserAdminBase):
 
 admin.site.register(User, UserAdmin)
 admin.site.unregister(Group)
+
+admin.site.site_header = _("Carwon Group Admin")
+admin.site.site_title = _("Carwon Admin Portal")
+admin.site.index_title = _("Welcome to manage water")
