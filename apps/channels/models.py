@@ -6,6 +6,7 @@ from apps.exist_devices.models import Device
 
 # Create your models here.
 
+
 class ChannelDevice(models.Model):
     device = models.OneToOneField(
         to=Device,
@@ -64,5 +65,5 @@ class ChannelDevice(models.Model):
         return f'{self.device.id} - {self.name}'
 
     class Meta:
-        verbose_name = 'Channel device'
-        verbose_name_plural = 'Channel devices'
+        verbose_name = _('Channel device')
+        verbose_name_plural = _('Channel devices')
