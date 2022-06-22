@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     # Local apps
     'apps.accounts',
     'apps.exist_devices',
+    'apps.channels',
 ]
 
 MIDDLEWARE = [
