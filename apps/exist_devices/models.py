@@ -3,10 +3,21 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Device(models.Model):
+    DEVICE_TYPE_CHOICES = (
+        ('channel', _('Water Channel')),
+        ('well', _('Water Well')),
+    )
+
     id = models.CharField(
         max_length=11,
         primary_key=True,
         verbose_name=_('ID')
+    )
+
+    type = models.CharField(
+        max_length=20,
+        choices=DEVICE_TYPE_CHOICES,
+        verbose_name=_('Type of device')
     )
 
     added_at = models.DateTimeField(
