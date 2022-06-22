@@ -47,7 +47,7 @@ class ChannelDevice(models.Model):
     latitude = models.DecimalField(
         max_digits=9,
         decimal_places=6,
-        verbose_name="Latitude of location",
+        verbose_name=_('Latitude of location'),
         blank=True,
         null=True
     )
@@ -55,7 +55,7 @@ class ChannelDevice(models.Model):
     longitude = models.DecimalField(
         max_digits=9,
         decimal_places=6,
-        verbose_name="Longitude of location",
+        verbose_name=_('Longitude of location'),
         blank=True,
         null=True
     )
