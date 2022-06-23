@@ -5,7 +5,7 @@ from .models import ChannelDevice, ChannelMessage
 
 
 class ChannelDeviceAdmin(admin.ModelAdmin):
-    list_display = ('name', 'device', 'belong_to', 'phone_number', 'height', 'height_conf')
+    list_display = ('name', 'device', 'user', 'phone_number', 'height', 'height_conf')
     search_fields = ('name', 'phone_number')
 
 

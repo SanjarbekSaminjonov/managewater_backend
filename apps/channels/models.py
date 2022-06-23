@@ -20,7 +20,7 @@ class ChannelDevice(models.Model):
         verbose_name=_('Name')
     )
 
-    belong_to = models.ForeignKey(
+    user = models.ForeignKey(
         to=get_user_model(),
         on_delete=models.CASCADE,
         related_name='channeldevices',
