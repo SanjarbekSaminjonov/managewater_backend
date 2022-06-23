@@ -10,7 +10,7 @@ from rest_framework.status import (
 from apps.channels.models import ChannelDevice, ChannelMessage
 
 
-def get_current_time(now):
+def get_formatted_time(now):
     return now.strftime('%H:%M:%S %d/%m/%Y')
 
 
@@ -50,7 +50,7 @@ def receive_channel_message(request):
                     'request': 'success',
                     'height': channel_device.height + channel_device.height_conf,
                     'phone': channel_device.phone_number,
-                    'datetime': get_current_time(
+                    'datetime': get_formatted_time(
                         channel_device_message.created_at + datetime.timedelta(hours=5)
                     )
                 },
