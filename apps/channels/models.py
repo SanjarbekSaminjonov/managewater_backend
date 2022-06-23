@@ -20,7 +20,7 @@ class ChannelDevice(models.Model):
         verbose_name=_('Name')
     )
 
-    belong_to = models.ForeignKey(
+    user = models.ForeignKey(
         to=get_user_model(),
         on_delete=models.CASCADE,
         related_name='channeldevices',
@@ -62,8 +62,63 @@ class ChannelDevice(models.Model):
     )
 
     def __str__(self):
-        return f'{self.device.id} - {self.name}'
+        return f'{self.device.id}'
 
     class Meta:
         verbose_name = _('Channel device')
         verbose_name_plural = _('Channel devices')
+
+
+class ChannelMessage(models.Model):
+    channel_device = models.ForeignKey(
+        to=ChannelDevice,
+        on_delete=models.CASCADE,
+        related_name='messages',
+        verbose_name=_('Channel device')
+    )
+
+    h1 = models.DecimalField(
+        max_digits=7,
+        decimal_places=2,
+        verbose_name=_('H1 (sm)')
+    )
+
+    h2 = models.DecimalField(
+        max_digits=7,
+        decimal_places=2,
+        verbose_name=_('H2 (sm)')
+    )
+
+    w1 = models.IntegerField(
+        verbose_name=_('W1 (liter/sec)')
+    )
+
+    w2 = models.IntegerField(
+        verbose_name=_('W2 (cubic meters/hour)')
+    )
+
+    vol = models.BigIntegerField(
+        verbose_name=_('Total amount of water')
+    )
+
+    bat = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        verbose_name=_('Battery power (volt)')
+    )
+
+    net = models.SmallIntegerField(
+        verbose_name=_('Network quality')
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name=_('Added time')
+    )
+
+    def __str__(self):
+        return f'{self.channel_device.name}'
+
+    class Meta:
+        verbose_name = _('Channel message')
+        verbose_name_plural = _('Channels messages')
