@@ -26,7 +26,7 @@ def receive_channel_message(request):
     net = data.get('net')
     latitude = data.get('latitude')
     longitude = data.get('longitude')
-    channel_device_id = data.get('basin')
+    channel_device_id = data.get('device_id')
 
     if all((h1, h2, w1, w2, vol, bat, net, channel_device_id)):
         channel_device = ChannelDevice.objects.filter(device__id=channel_device_id).first()

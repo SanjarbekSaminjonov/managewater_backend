@@ -22,8 +22,9 @@ class ChannelDevice(models.Model):
 
     user = models.ForeignKey(
         to=get_user_model(),
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
         related_name='channeldevices',
+        null=True,
         verbose_name=_('Belong to')
     )
 
