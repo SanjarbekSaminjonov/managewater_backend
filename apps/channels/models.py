@@ -118,7 +118,7 @@ class ChannelMessage(models.Model):
     )
 
     def __str__(self):
-        return f'{self.channel_device.name}'
+        return self.channel_device.name
 
     class Meta:
         verbose_name = _('Channel message')
