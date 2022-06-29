@@ -22,8 +22,9 @@ class ChannelDevice(models.Model):
 
     user = models.ForeignKey(
         to=get_user_model(),
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
         related_name='channeldevices',
+        null=True,
         verbose_name=_('Belong to')
     )
 
@@ -117,7 +118,7 @@ class ChannelMessage(models.Model):
     )
 
     def __str__(self):
-        return f'{self.channel_device.name}'
+        return self.channel_device.name
 
     class Meta:
         verbose_name = _('Channel message')
