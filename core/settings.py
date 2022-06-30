@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'apps.accounts',
     'apps.exist_devices',
     'apps.channels',
+    'apps.watchers',
 ]
 
 MIDDLEWARE = [
