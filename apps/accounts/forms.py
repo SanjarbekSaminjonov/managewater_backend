@@ -16,6 +16,7 @@ class UserCreationForm(UserCreationFormBase):
             'region',
             'city',
             'org_name',
+            'is_master'
         )
 
 
@@ -29,4 +30,5 @@ class UserChangeForm(UserChangeFormBase):
             'region',
             'city',
             'org_name',
+            'is_master'
         )

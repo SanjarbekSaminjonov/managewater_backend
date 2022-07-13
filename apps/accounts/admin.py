@@ -13,7 +13,7 @@ class UserAdmin(UserAdminBase):
 
     list_display = (
         'username', 'first_name', 'last_name',
-        'region', 'city', 'org_name', 'telegram_id',
+        'region', 'city', 'org_name', 'telegram_id', 'is_master'
     )
 
     search_fields = (
@@ -31,6 +31,7 @@ class UserAdmin(UserAdminBase):
                     'region',
                     'city',
                     'org_name',
+                    'is_master'
                 )
             }
         )

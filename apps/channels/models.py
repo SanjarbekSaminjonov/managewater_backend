@@ -25,7 +25,17 @@ class ChannelDevice(models.Model):
         on_delete=models.SET_NULL,
         related_name='channeldevices',
         null=True,
+        blank=True,
         verbose_name=_('Belong to')
+    )
+
+    master = models.ForeignKey(
+        to=get_user_model(),
+        on_delete=models.SET_NULL,
+        related_name='channel_devices',
+        null=True,
+        blank=True,
+        verbose_name=_('Master')
     )
 
     phone_number = models.CharField(
@@ -37,7 +47,7 @@ class ChannelDevice(models.Model):
         default=0.0,
         max_digits=8,
         decimal_places=2,
-        verbose_name=_('Height of device (sm)')
+        verbose_name=_('Height of water (sm)')
     )
 
     height_conf = models.IntegerField(
