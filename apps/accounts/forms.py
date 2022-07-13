@@ -11,12 +11,6 @@ class UserCreationForm(UserCreationFormBase):
         model = User
         fields = (
             'username',
-            'first_name',
-            'last_name',
-            'region',
-            'city',
-            'org_name',
-            'is_master'
         )
 
 
