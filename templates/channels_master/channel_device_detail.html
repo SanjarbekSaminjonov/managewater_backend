@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Detail of device
+{% endblock page_title %}
+
+{% block content %}
+    <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
+        <div class="container mx-auto px-6 py-4">
+            <div>
+                <a href="{% url 'master_dashboard' %}"
+                   class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-black rounded-md hover:bg-neutral-500 focus:outline-none focus:bg-indigo-500">
+                    Back </a>
+                <a href="{% url 'edit_channel_device_data' selected_device.device_id %}"
+                   class="px-4 ml-3 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">
+                    Edit </a>
+                <a href="{% url 'delete_channel_device' selected_device.device_id %}"
+                   onclick="return confirm('Are you sure?')"
+                   class="px-4 ml-3 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:bg-red-600">
+                    Delete </a>
+            </div>
+            {% if selected_device %}
+                <div class="mt-6">
+                    <div class="my-6 overflow-hidden bg-white rounded-md shadow">
+                        <table class="w-full text-left border-collapse">
+                            <thead class="border-b">
+                            <tr>
+                                <th class="px-5 py-3 text-lg font-medium text-gray-100 uppercase bg-indigo-800">
+                                    {{ selected_device.name }}
+                                </th>
+                                <th class="px-5 py-3 text-lg font-medium text-gray-100 uppercase bg-indigo-800">
+                                    ID: {{ selected_device.device_id }}
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="hover:bg-gray-200">
+                                <td class="px-6 py-4 text-lg text-gray-700 border-b">Belong to</td>
+                                <td class="px-6 py-4 text-gray-500 border-b">{{ selected_device.user }}</td>
+                            </tr>
+                            <tr class="hover:bg-gray-200">
+                                <td class="px-6 py-4 text-lg text-gray-700 border-b">Phone number</td>
+                                <td class="px-6 py-4 text-gray-500 border-b">{{ selected_device.phone_number }}</td>
+                            </tr>
+                            <tr class="hover:bg-gray-200">
+                                <td class="px-6 py-4 text-lg text-gray-700 border-b">Height of water (sm)</td>
+                                <td class="px-6 py-4 text-gray-500 border-b">{{ selected_device.height }}</td>
+                            </tr>
+                            <tr class="hover:bg-gray-200">
+                                <td class="px-6 py-4 text-lg text-gray-700 border-b">Height conf (sm)</td>
+                                <td class="px-6 py-4 text-gray-500 border-b">{{ selected_device.height_conf }}</td>
+                            </tr>
+                            <tr class="hover:bg-gray-200">
+                                <td class="px-6 py-4 text-lg text-gray-700 border-b">Latitude of location</td>
+                                <td class="px-6 py-4 text-gray-500 border-b">{{ selected_device.latitude }}</td>
+                            </tr>
+                            <tr class="hover:bg-gray-200">
+                                <td class="px-6 py-4 text-lg text-gray-700 border-b">Longitude of location</td>
+                                <td class="px-6 py-4 text-gray-500 border-b">{{ selected_device.longitude }}</td>
+                            </tr>
+                            {% if selected_device.latitude and selected_device.longitude %}
+                                <tr class="hover:bg-gray-200">
+                                    <td class="px-6 py-4 text-lg text-gray-700 border-b">See location on google
+                                        map
+                                    </td>
+                                    <td class="px-6 py-4 text-blue-900 border-b">
+                                        <a class="font-bold" target="_blank"
+                                           href="https://maps.google.com/?q={{ selected_device.latitude }},{{ selected_device.longitude }}">
+                                            Link
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            {% endif %}
+        </div>
+    </main>
+{% endblock content %}

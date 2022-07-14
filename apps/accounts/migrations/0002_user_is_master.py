@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='user',
             name='is_master',
-            field=models.BooleanField(default=False, verbose_name='Is master'),
+            field=models.BooleanField(default=False, verbose_name='Is channels_master'),
         ),
     ]

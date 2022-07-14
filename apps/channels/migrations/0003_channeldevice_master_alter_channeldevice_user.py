@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AddField(
             model_name='channeldevice',
-            name='master',
+            name='channels_master',
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='channel_devices', to=settings.AUTH_USER_MODEL, verbose_name='Master'),
         ),
         migrations.AlterField(

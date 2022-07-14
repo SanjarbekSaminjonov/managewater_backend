@@ -75,9 +75,29 @@ class ChannelDevice(models.Model):
     def __str__(self):
         return f'{self.device.id}'
 
+    def save(self, *args, **kwargs):
+        self.device.is_active = True
+        self.device.save()
+        super(ChannelDevice, self).save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        self.device.is_active = False
+        self.device.save()
+        super(ChannelDevice, self).delete(*args, **kwargs)
+
     class Meta:
         verbose_name = _('Channel device')
         verbose_name_plural = _('Channel devices')
+
+
+class ChannelDeviceVolumeTable(models.Model):
+    device = models.ForeignKey(to=ChannelDevice, on_delete=models.CASCADE)
+    tens = models.IntegerField()
+    ones = models.IntegerField()
+    value = models.FloatField()
+
+    def __str__(self):
+        return f'{self.id} / {self.device} / {self.tens + self.ones} / {self.value}'
 
 
 class ChannelMessage(models.Model):

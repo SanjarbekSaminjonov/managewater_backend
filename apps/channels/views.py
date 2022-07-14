@@ -1,7 +1,76 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from .forms import ChannelDeviceForm, ChannelDeviceEditForm
+from .models import ChannelDevice
 
 
 @login_required(login_url='login')
 def master_home_page(request):
-    return render(request, 'master/index.html')
+    channel_devices = ChannelDevice.objects.filter(master=request.user)
+    context = {
+        'channel_devices': channel_devices
+    }
+    return render(request, 'channels_master/index.html', context)
+
+
+@login_required(login_url='login')
+def device_detail(request, device_id):
+    channel_devices = ChannelDevice.objects.filter(master=request.user)
+    selected_device = channel_devices.filter(device_id=device_id).first()
+    if selected_device is None:
+        return render(request, 'home/404.html')
+    context = {
+        'selected_device': selected_device
+    }
+    return render(request, 'channels_master/channel_device_detail.html', context)
+
+
+@login_required(login_url='login')
+def delete_channel_device(request, device_id):
+    channel_devices = ChannelDevice.objects.filter(master=request.user)
+    selected_device = channel_devices.filter(device_id=device_id).first()
+    if selected_device is not None:
+        selected_device.delete()
+    return redirect('master_dashboard')
+
+
+@login_required(login_url='login')
+def edit_channel_device_data(request, device_id):
+    channel_devices = ChannelDevice.objects.filter(master=request.user)
+    selected_device = channel_devices.filter(device_id=device_id).first()
+    if selected_device is not None:
+
+        if request.method == 'POST':
+            form = ChannelDeviceEditForm(data=request.POST, instance=selected_device)
+            if form.is_valid():
+                form.save()
+                return redirect('device_detail', selected_device.device_id)
+
+        form = ChannelDeviceEditForm(instance=selected_device)
+    else:
+        form = ChannelDeviceEditForm()
+    context = {
+        'device_id': selected_device.device_id,
+        'title': 'Edit channel device',
+        'form': form
+    }
+    return render(request, 'channels_master/add_or_edit_device.html', context)
+
+
+@login_required(login_url='login')
+def add_new_device(request):
+    form = ChannelDeviceForm()
+
+    if request.method == 'POST':
+        form = ChannelDeviceForm(data=request.POST)
+
+        if form.is_valid():
+            form.save(master=request.user)
+            return redirect('master_dashboard')
+
+    context = {
+        'title': 'Add channel device',
+        'form': form
+    }
+
+    return render(request, 'channels_master/add_or_edit_device.html', context)

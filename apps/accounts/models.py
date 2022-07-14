@@ -43,7 +43,7 @@ class User(AbstractUser):
 
     is_master = models.BooleanField(
         default=False,
-        verbose_name=_('Is master')
+        verbose_name=_('Is channels_master')
     )
 
     def __str__(self):

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ChannelDevice, ChannelMessage
+from .models import ChannelDevice, ChannelMessage, ChannelDeviceVolumeTable
 
 # Register your models here.
 
@@ -16,3 +16,5 @@ class ChannelMessageAdmin(admin.ModelAdmin):
 
 admin.site.register(ChannelDevice, ChannelDeviceAdmin)
 admin.site.register(ChannelMessage, ChannelMessageAdmin)
+
+admin.site.register(ChannelDeviceVolumeTable)
