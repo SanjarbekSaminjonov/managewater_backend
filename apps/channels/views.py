@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .forms import ChannelDeviceForm, ChannelDeviceEditForm
-from .models import ChannelDevice
+from django.shortcuts import render, redirect
+
+from .forms import ChannelDeviceForm, ChannelDeviceEditForm, ChannelDeviceVolumeForm
+from .models import ChannelDevice, ChannelDeviceVolumeTable
 
 
 @login_required(login_url='login')
@@ -20,7 +21,9 @@ def device_detail(request, device_id):
     if selected_device is None:
         return render(request, 'home/404.html')
     context = {
-        'selected_device': selected_device
+        'selected_device': selected_device,
+        'selected_device_volume_table':
+            ChannelDeviceVolumeTable.objects.filter(device_id=selected_device.device_id).order_by('tens')
     }
     return render(request, 'channels_master/channel_device_detail.html', context)
 
@@ -74,3 +77,56 @@ def add_new_device(request):
     }
 
     return render(request, 'channels_master/add_or_edit_device.html', context)
+
+
+@login_required(login_url='login')
+def add_new_row_for_volume_table(request, device_id):
+    last_row = ChannelDeviceVolumeTable.objects.filter(device_id=device_id).order_by('tens').last()
+    obj = ChannelDeviceVolumeTable.objects.create(device_id=device_id, tens=last_row.tens + 10)
+    return redirect('edit_new_row_for_volume_table', obj.id)
+
+
+@login_required(login_url='login')
+def edit_new_row_for_volume_table(request, row_id):
+    obj = ChannelDeviceVolumeTable.objects.filter(pk=row_id).first()
+    if obj is not None:
+        device_id = obj.device_id
+        if request.method == 'POST':
+            form = ChannelDeviceVolumeForm(data=request.POST, instance=obj)
+            if form.is_valid():
+                form.save()
+                return redirect('volume_table', device_id)
+        context = {
+            'title': 'Edit row',
+            'device_id': device_id,
+            'form': ChannelDeviceVolumeForm(instance=obj),
+            'selected_device_volume_table':
+                ChannelDeviceVolumeTable.objects.filter(device_id=device_id).order_by('tens')
+        }
+
+        return render(request, 'channels_master/edit_row_volume_table.html', context)
+
+    return redirect('master_dashboard')
+
+
+@login_required(login_url='login')
+def delete_new_row_for_volume_table(request, row_id):
+    obj = ChannelDeviceVolumeTable.objects.filter(pk=row_id).first()
+    if obj is not None:
+        device_id = obj.device_id
+        obj.delete()
+        return redirect('volume_table', device_id)
+
+    return redirect('master_dashboard')
+
+
+@login_required(login_url='login')
+def volume_table(request, device_id):
+    context = {
+        'title': 'Device rows',
+        'device_id': device_id,
+        'selected_device_volume_table':
+            ChannelDeviceVolumeTable.objects.filter(device_id=device_id).order_by('tens')
+    }
+
+    return render(request, 'channels_master/edit_row_volume_table.html', context)

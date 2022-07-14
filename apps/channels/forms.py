@@ -1,5 +1,5 @@
-from django.forms import ModelForm, CharField
-from .models import ChannelDevice
+from django.forms import ModelForm
+from .models import ChannelDevice, ChannelDeviceVolumeTable
 from apps.exist_devices.models import Device
 
 
@@ -38,3 +38,20 @@ class ChannelDeviceEditForm(ModelForm):
             visible.field.widget.attrs['class'] = 'w-full mt-3 p-1 border-gray-900 rounded-md ' \
                                                   'focus:border-indigo-600 focus:ring focus:ring-opacity-40' \
                                                   'focus:ring-indigo-500 border-2 border-black border-slate-500'
+
+
+class ChannelDeviceVolumeForm(ModelForm):
+    class Meta:
+        model = ChannelDeviceVolumeTable
+        fields = (
+            'tens', 'zero', 'one', 'two', 'three', 'four', 'five',
+            'six', 'seven', 'eight', 'nine'
+        )
+
+    def __init__(self, **kwargs):
+        super(ChannelDeviceVolumeForm, self).__init__(**kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'w-32 -mt-1 p-1 border-gray-900 rounded-md ' \
+                                                  'focus:border-indigo-600 focus:ring focus:ring-opacity-40' \
+                                                  'focus:ring-indigo-500 border-2 border-black border-slate-500'
+

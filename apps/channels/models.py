@@ -92,12 +92,35 @@ class ChannelDevice(models.Model):
 
 class ChannelDeviceVolumeTable(models.Model):
     device = models.ForeignKey(to=ChannelDevice, on_delete=models.CASCADE)
-    tens = models.IntegerField()
-    ones = models.IntegerField()
-    value = models.FloatField()
+    tens = models.IntegerField(default=0)
+    zero = models.FloatField(default=0)
+    one = models.FloatField(default=0)
+    two = models.FloatField(default=0)
+    three = models.FloatField(default=0)
+    four = models.FloatField(default=0)
+    five = models.FloatField(default=0)
+    six = models.FloatField(default=0)
+    seven = models.FloatField(default=0)
+    eight = models.FloatField(default=0)
+    nine = models.FloatField(default=0)
 
     def __str__(self):
-        return f'{self.id} / {self.device} / {self.tens + self.ones} / {self.value}'
+        return f'{self.id} / {self.device} / {self.tens}'
+
+    def get_value(self, ones):
+        match_values = {
+            0: self.zero,
+            1: self.one,
+            2: self.two,
+            3: self.three,
+            4: self.four,
+            5: self.five,
+            6: self.six,
+            7: self.seven,
+            8: self.eight,
+            9: self.nine
+        }
+        return match_values.get(ones)
 
 
 class ChannelMessage(models.Model):
