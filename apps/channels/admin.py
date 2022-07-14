@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import ChannelDevice, ChannelMessage
+
+from .models import ChannelDevice, ChannelMessage, ChannelDeviceVolumeTable
+
 
 # Register your models here.
 
@@ -14,5 +16,14 @@ class ChannelMessageAdmin(admin.ModelAdmin):
     ordering = ('-created_at',)
 
 
+class ChannelDeviceVolumeTableAdmin(admin.ModelAdmin):
+    list_display = (
+        'device', 'tens', 'zero', 'one', 'two', 'three',
+        'four', 'five', 'six', 'seven', 'eight', 'nine'
+    )
+    ordering = ('device', 'tens')
+
+
 admin.site.register(ChannelDevice, ChannelDeviceAdmin)
 admin.site.register(ChannelMessage, ChannelMessageAdmin)
+admin.site.register(ChannelDeviceVolumeTable, ChannelDeviceVolumeTableAdmin)

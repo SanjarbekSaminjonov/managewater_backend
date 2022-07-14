@@ -41,6 +41,11 @@ class User(AbstractUser):
         null=True,
     )
 
+    is_master = models.BooleanField(
+        default=False,
+        verbose_name=_('Is channels_master')
+    )
+
     def __str__(self):
         return self.username
 

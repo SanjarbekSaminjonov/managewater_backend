@@ -25,7 +25,17 @@ class ChannelDevice(models.Model):
         on_delete=models.SET_NULL,
         related_name='channeldevices',
         null=True,
+        blank=True,
         verbose_name=_('Belong to')
+    )
+
+    master = models.ForeignKey(
+        to=get_user_model(),
+        on_delete=models.SET_NULL,
+        related_name='channel_devices',
+        null=True,
+        blank=True,
+        verbose_name=_('Master')
     )
 
     phone_number = models.CharField(
@@ -37,7 +47,7 @@ class ChannelDevice(models.Model):
         default=0.0,
         max_digits=8,
         decimal_places=2,
-        verbose_name=_('Height of device (sm)')
+        verbose_name=_('Height of water (sm)')
     )
 
     height_conf = models.IntegerField(
@@ -65,9 +75,52 @@ class ChannelDevice(models.Model):
     def __str__(self):
         return f'{self.device.id}'
 
+    def save(self, *args, **kwargs):
+        self.device.is_active = True
+        self.device.save()
+        super(ChannelDevice, self).save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        self.device.is_active = False
+        self.device.save()
+        super(ChannelDevice, self).delete(*args, **kwargs)
+
     class Meta:
         verbose_name = _('Channel device')
         verbose_name_plural = _('Channel devices')
+
+
+class ChannelDeviceVolumeTable(models.Model):
+    device = models.ForeignKey(to=ChannelDevice, on_delete=models.CASCADE)
+    tens = models.IntegerField(default=0)
+    zero = models.FloatField(default=0)
+    one = models.FloatField(default=0)
+    two = models.FloatField(default=0)
+    three = models.FloatField(default=0)
+    four = models.FloatField(default=0)
+    five = models.FloatField(default=0)
+    six = models.FloatField(default=0)
+    seven = models.FloatField(default=0)
+    eight = models.FloatField(default=0)
+    nine = models.FloatField(default=0)
+
+    def __str__(self):
+        return f'{self.id} / {self.device} / {self.tens}'
+
+    def get_value(self, ones):
+        match_values = {
+            0: self.zero,
+            1: self.one,
+            2: self.two,
+            3: self.three,
+            4: self.four,
+            5: self.five,
+            6: self.six,
+            7: self.seven,
+            8: self.eight,
+            9: self.nine
+        }
+        return match_values.get(ones)
 
 
 class ChannelMessage(models.Model):
