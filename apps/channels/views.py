@@ -82,7 +82,10 @@ def add_new_device(request):
 @login_required(login_url='login')
 def add_new_row_for_volume_table(request, device_id):
     last_row = ChannelDeviceVolumeTable.objects.filter(device_id=device_id).order_by('tens').last()
-    obj = ChannelDeviceVolumeTable.objects.create(device_id=device_id, tens=last_row.tens + 10)
+    if last_row is None:
+        obj = ChannelDeviceVolumeTable.objects.create(device_id=device_id, tens=0)
+    else:
+        obj = ChannelDeviceVolumeTable.objects.create(device_id=device_id, tens=last_row.tens + 10)
     return redirect('edit_new_row_for_volume_table', obj.id)
 
 
