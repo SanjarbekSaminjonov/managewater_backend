@@ -29,7 +29,7 @@ def receive_channel_message(request):
         return Response(
             {
                 'request': 'success',
-                'datetime': get_formatted_time(datetime.datetime.now() + datetime.timedelta(hours=5))
+                'datetime': get_formatted_time(datetime.datetime.now())
             },
             status=HTTP_201_CREATED
         )
