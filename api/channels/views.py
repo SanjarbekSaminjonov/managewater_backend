@@ -36,7 +36,7 @@ def receive_channel_message(request):
     return Response(
         {
             'request': 'error',
-            'datetime': get_formatted_time(datetime.datetime.now() + datetime.timedelta(hours=5))
+            'datetime': get_formatted_time(datetime.datetime.now())
         },
         status=HTTP_400_BAD_REQUEST
     )
