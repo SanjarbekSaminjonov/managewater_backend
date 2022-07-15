@@ -31,7 +31,7 @@ def receive_channel_message(request):
         return Response(
             {
                 'request': 'success',
-                'datetime': str(datetime.datetime.now() + datetime.timedelta(hours=5)),
+                'datetime': get_formatted_time(datetime.datetime.now() + datetime.timedelta(hours=5)),
                 're_settings': re_settings
             },
             status=HTTP_201_CREATED
@@ -39,7 +39,7 @@ def receive_channel_message(request):
     return Response(
         {
             'request': 'error',
-            'datetime': str(datetime.datetime.now() + datetime.timedelta(hours=5)),
+            'datetime': get_formatted_time(datetime.datetime.now() + datetime.timedelta(hours=5)),
             're_settings': re_settings
         },
         status=HTTP_400_BAD_REQUEST
