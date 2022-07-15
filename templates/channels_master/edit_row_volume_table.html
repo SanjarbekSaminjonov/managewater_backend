@@ -14,130 +14,129 @@
             </a>
             {% if form %}
                 <form method="post" class="mt-6">
-                {% csrf_token %}
-                <div class="grid grid-cols-2 gap-6 mt-4 sm:grid-cols-2">
-                    {{ form }}
-                </div>
-
-                <div class="flex justify-end mt-4">
-                    <button type="submit" class="px-4 py-2 text-gray-200 bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
-                        Save
-                    </button>
-                </div>
-
-            </form>
-            {% endif %}
-
-
-            {% if selected_device_volume_table %}
-                <div class="flex justify-between items-center mt-6">
-                    <span></span>
-                    <h2 class="text-2xl font-semibold leading-tight text-gray-700">
-                        <span>m<sup>3</sup>/s</span> Water consumption (Suv sarfi)
-                    </h2>
-                    <a href="{% url 'add_new_row_for_volume_table' device_id %}"
-                       class="px-3 py-2 font-medium text-white text-sm capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">
-                        Add new row
-                    </a>
-                </div>
-
-                <div class="py-2 my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-                    <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
-                        <table class="min-w-full">
-                            <thead>
-                            <tr>
-                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
-                                    SM
-                                </th>
-                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
-                                    0
-                                </th>
-                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
-                                    1
-                                </th>
-                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
-                                    2
-                                </th>
-                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
-                                    3
-                                </th>
-                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
-                                    4
-                                </th>
-                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
-                                    5
-                                </th>
-                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
-                                    6
-                                </th>
-                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
-                                    7
-                                </th>
-                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
-                                    8
-                                </th>
-                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
-                                    9
-                                </th>
-                                <th class="px-6 py-3 bg-gray-100 border-b border-gray-200">
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody class="bg-white">
-
-                            {% for row in selected_device_volume_table %}
-                                <tr>
-                                    <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
-                                        {{ row.tens }}
-                                    </td>
-                                    <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
-                                        {{ row.zero }}
-                                    </td>
-                                    <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
-                                        {{ row.one }}
-                                    </td>
-                                    <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
-                                        {{ row.two }}
-                                    </td>
-                                    <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
-                                        {{ row.three }}
-                                    </td>
-                                    <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
-                                        {{ row.four }}
-                                    </td>
-                                    <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
-                                        {{ row.five }}
-                                    </td>
-                                    <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
-                                        {{ row.six }}
-                                    </td>
-                                    <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
-                                        {{ row.seven }}
-                                    </td>
-                                    <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
-                                        {{ row.eight }}
-                                    </td>
-                                    <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
-                                        {{ row.nine }}
-                                    </td>
-                                    <td class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap">
-                                        <a href="{% url 'edit_new_row_for_volume_table' row.id %}"
-                                           class="text-indigo-600 hover:text-indigo-900">
-                                            Edit
-                                        </a> |
-                                        <a href="{% url 'delete_new_row_for_volume_table' row.id %}"
-                                           class="text-red-600 hover:text-red-900">
-                                            Delete
-                                        </a>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-
-                            </tbody>
-                        </table>
+                    {% csrf_token %}
+                    <div class="grid grid-cols-2 gap-6 mt-4 sm:grid-cols-2">
+                        {{ form }}
                     </div>
-                </div>
+
+                    <div class="flex justify-end mt-4">
+                        <button type="submit"
+                                class="px-4 py-2 text-gray-200 bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
+                            Save
+                        </button>
+                    </div>
+
+                </form>
             {% endif %}
+
+            <div class="flex justify-between items-center mt-6">
+                <span></span>
+                <h2 class="text-2xl font-semibold leading-tight text-gray-700">
+                    <span>m<sup>3</sup>/s</span> Water consumption (Suv sarfi)
+                </h2>
+                <a href="{% url 'add_new_row_for_volume_table' device_id %}"
+                   class="px-3 py-2 font-medium text-white text-sm capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">
+                    Add new row
+                </a>
+            </div>
+
+            <div class="py-2 my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+                <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
+                    <table class="min-w-full">
+                        <thead>
+                        <tr>
+                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
+                                SM
+                            </th>
+                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
+                                0
+                            </th>
+                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
+                                1
+                            </th>
+                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
+                                2
+                            </th>
+                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
+                                3
+                            </th>
+                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
+                                4
+                            </th>
+                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
+                                5
+                            </th>
+                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
+                                6
+                            </th>
+                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
+                                7
+                            </th>
+                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
+                                8
+                            </th>
+                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
+                                9
+                            </th>
+                            <th class="px-6 py-3 bg-gray-100 border-b border-gray-200">
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody class="bg-white">
+
+                        {% for row in selected_device_volume_table %}
+                            <tr>
+                                <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
+                                    {{ row.tens }}
+                                </td>
+                                <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
+                                    {{ row.zero }}
+                                </td>
+                                <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
+                                    {{ row.one }}
+                                </td>
+                                <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
+                                    {{ row.two }}
+                                </td>
+                                <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
+                                    {{ row.three }}
+                                </td>
+                                <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
+                                    {{ row.four }}
+                                </td>
+                                <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
+                                    {{ row.five }}
+                                </td>
+                                <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
+                                    {{ row.six }}
+                                </td>
+                                <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
+                                    {{ row.seven }}
+                                </td>
+                                <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
+                                    {{ row.eight }}
+                                </td>
+                                <td class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap">
+                                    {{ row.nine }}
+                                </td>
+                                <td class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap">
+                                    <a href="{% url 'edit_new_row_for_volume_table' row.id %}"
+                                       class="text-indigo-600 hover:text-indigo-900">
+                                        Edit
+                                    </a> |
+                                    <a href="{% url 'delete_new_row_for_volume_table' row.id %}"
+                                       class="text-red-600 hover:text-red-900">
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
 
 
