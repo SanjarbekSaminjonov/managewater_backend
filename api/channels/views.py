@@ -7,8 +7,6 @@ from rest_framework.status import (
     HTTP_400_BAD_REQUEST
 )
 
-from apps.channels.models import ChannelDevice, ChannelMessage
-
 
 def get_formatted_time(now):
     return now.strftime('%H:%M:%S %d/%m/%Y')
@@ -31,16 +29,14 @@ def receive_channel_message(request):
         return Response(
             {
                 'request': 'success',
-                'datetime': get_formatted_time(datetime.datetime.now() + datetime.timedelta(hours=5)),
-                're_settings': re_settings
+                'datetime': get_formatted_time(datetime.datetime.now() + datetime.timedelta(hours=5))
             },
             status=HTTP_201_CREATED
         )
     return Response(
         {
             'request': 'error',
-            'datetime': get_formatted_time(datetime.datetime.now() + datetime.timedelta(hours=5)),
-            're_settings': re_settings
+            'datetime': get_formatted_time(datetime.datetime.now() + datetime.timedelta(hours=5))
         },
         status=HTTP_400_BAD_REQUEST
     )
