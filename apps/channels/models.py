@@ -43,6 +43,14 @@ class ChannelDevice(models.Model):
         verbose_name=_('Phone number')
     )
 
+    full_height = models.DecimalField(
+        max_digits=8,
+        decimal_places=2,
+        blank=True,
+        null=True,
+        verbose_name=_('Full height (sm)')
+    )
+
     height = models.DecimalField(
         default=0.0,
         max_digits=8,
@@ -124,35 +132,25 @@ class ChannelDeviceVolumeTable(models.Model):
 
 
 class ChannelMessage(models.Model):
-    channel_device = models.ForeignKey(
+    device = models.ForeignKey(
         to=ChannelDevice,
         on_delete=models.CASCADE,
         related_name='messages',
         verbose_name=_('Channel device')
     )
 
-    h1 = models.DecimalField(
+    h = models.DecimalField(
         max_digits=7,
         decimal_places=2,
-        verbose_name=_('H1 (sm)')
+        verbose_name=_('From device to water (sm)')
     )
 
-    h2 = models.DecimalField(
-        max_digits=7,
+    water_volume = models.DecimalField(
+        max_digits=12,
         decimal_places=2,
-        verbose_name=_('H2 (sm)')
-    )
-
-    w1 = models.IntegerField(
-        verbose_name=_('W1 (liter/sec)')
-    )
-
-    w2 = models.IntegerField(
-        verbose_name=_('W2 (cubic meters/hour)')
-    )
-
-    vol = models.BigIntegerField(
-        verbose_name=_('Total amount of water')
+        blank=True,
+        null=True,
+        verbose_name=_('Volume of water (cubic meters/sec)')
     )
 
     bat = models.DecimalField(
@@ -171,7 +169,7 @@ class ChannelMessage(models.Model):
     )
 
     def __str__(self):
-        return self.channel_device.name
+        return self.device.name
 
     class Meta:
         verbose_name = _('Channel message')

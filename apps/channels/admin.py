@@ -7,12 +7,12 @@ from .models import ChannelDevice, ChannelMessage, ChannelDeviceVolumeTable
 
 
 class ChannelDeviceAdmin(admin.ModelAdmin):
-    list_display = ('name', 'device', 'user', 'phone_number', 'height', 'height_conf')
+    list_display = ('name', 'device', 'user', 'phone_number', 'full_height', 'height', 'height_conf')
     search_fields = ('name', 'phone_number')
 
 
 class ChannelMessageAdmin(admin.ModelAdmin):
-    list_display = ('channel_device', 'h1', 'h2', 'w1', 'w2', 'vol', 'created_at')
+    list_display = ('device', 'h', 'water_volume', 'created_at')
     ordering = ('-created_at',)
 
 
