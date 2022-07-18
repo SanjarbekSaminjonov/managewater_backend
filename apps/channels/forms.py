@@ -39,7 +39,7 @@ class ChannelDeviceForm(ModelForm):
 class ChannelDeviceEditForm(ModelForm):
     class Meta:
         model = ChannelDevice
-        fields = ('device', 'name', 'phone_number', 'height', 'height_conf', 'latitude', 'longitude')
+        fields = ('name', 'phone_number', 'height', 'height_conf', 'latitude', 'longitude')
 
     def __init__(self, *args, **kwargs):
         super(ChannelDeviceEditForm, self).__init__(*args, **kwargs)

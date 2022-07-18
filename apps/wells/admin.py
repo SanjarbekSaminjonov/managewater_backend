@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import WellDevice
+from .models import WellDevice, WellDeviceMessage
 from .forms import WellDeviceAdminForm
 
 
@@ -9,4 +9,9 @@ class WellDeviceAdmin(admin.ModelAdmin):
     search_fields = ('name', 'phone_number')
 
 
+class WellDeviceMessageAdmin(admin.ModelAdmin):
+    list_display = ('device', 'h', 'mineral', 'temperature', 'bat', 'is_charging', 'net', 'created_at')
+
+
 admin.site.register(WellDevice, WellDeviceAdmin)
+admin.site.register(WellDeviceMessage, WellDeviceMessageAdmin)

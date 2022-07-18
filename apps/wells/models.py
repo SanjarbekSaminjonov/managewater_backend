@@ -47,6 +47,9 @@ class WellDevice(models.Model):
         null=True
     )
 
+    def __str__(self):
+        return f'{self.name} - {self.device}'
+
     def save(self, *args, **kwargs):
         self.device.is_active = True
         self.device.save()
@@ -59,4 +62,63 @@ class WellDevice(models.Model):
 
     class Meta:
         verbose_name = _('Well device')
-        verbose_name_plural = _('Well devices')
+        verbose_name_plural = _('Wells devices')
+
+
+class WellDeviceMessage(models.Model):
+    device = models.ForeignKey(
+        to=WellDevice,
+        on_delete=models.CASCADE,
+        related_name='messages',
+        verbose_name=_('Well device')
+    )
+
+    h = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        verbose_name=_('Water height (sm)')
+    )
+
+    mineral = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        verbose_name=_('Mineral (gramm/liter)')
+    )
+
+    temperature = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        verbose_name=_('Temperature (Celsius)')
+    )
+
+    bat = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        blank=True,
+        null=True,
+        verbose_name=_('Battery power (volt)')
+    )
+
+    is_charging = models.BooleanField(
+        blank=True,
+        null=True,
+        verbose_name=_('Is charging')
+    )
+
+    net = models.SmallIntegerField(
+        blank=True,
+        null=True,
+        verbose_name=_('Network quality')
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name=_('Added time')
+    )
+
+    def __str__(self):
+        return self.device.name
+
+    class Meta:
+        verbose_name = _('Well message')
+        verbose_name_plural = _('Wells messages')

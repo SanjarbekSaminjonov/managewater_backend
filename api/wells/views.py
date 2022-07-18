@@ -7,6 +7,8 @@ from rest_framework.status import (
     HTTP_400_BAD_REQUEST
 )
 
+from apps.wells.models import WellDevice, WellDeviceMessage
+
 
 def get_formatted_time(now):
     return now.strftime('%H:%M:%S %d/%m/%Y')
@@ -15,8 +17,8 @@ def get_formatted_time(now):
 @api_view(['POST'])
 def receive_well_message(request):
     data = request.data
-    height = data.get('level')
-    meneral = data.get('meneral')
+    h = data.get('level')
+    mineral = data.get('meneral')
     temperature = data.get('temp')
     bat = data.get('bat')
     is_charging = data.get('charging')
@@ -25,7 +27,23 @@ def receive_well_message(request):
     longitude = data.get('longitude')
     device_id = data.get('device_id')
 
-    if all((height, meneral, temperature, bat, is_charging, net, latitude, longitude, device_id)):
+    device = WellDevice.objects.filter(device_id=device_id).first()
+
+    if all((h, mineral, temperature, bat, is_charging, net, latitude, longitude, device)):
+        WellDeviceMessage.objects.create(
+            device=device,
+            h=h,
+            mineral=mineral,
+            temperature=temperature,
+            bat=bat,
+            is_charging=bool(int(is_charging)),
+            net=net
+        )
+
+        device.latitude = latitude
+        device.longitude = longitude
+        device.save()
+
         return Response(
             {
                 'request': 'success',
