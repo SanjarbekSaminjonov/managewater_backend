@@ -17,14 +17,15 @@ def receive_well_message(request):
     data = request.data
     height = data.get('level')
     meneral = data.get('meneral')
-    net = data.get('net')
-    bat = data.get('bat')
     temperature = data.get('temp')
+    bat = data.get('bat')
     is_charging = data.get('charging')
-
+    net = data.get('net')
+    latitude = data.get('latitude')
+    longitude = data.get('longitude')
     device_id = data.get('device_id')
 
-    if all((height, meneral, net, bat, temperature, is_charging, device_id)):
+    if all((height, meneral, temperature, bat, is_charging, net, latitude, longitude, device_id)):
         return Response(
             {
                 'request': 'success',

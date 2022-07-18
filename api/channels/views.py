@@ -36,7 +36,7 @@ def receive_channel_message(request):
             device=device,
             h=h,
             bat=bat,
-            is_charging=is_charging,
+            is_charging=bool(int(is_charging)),
             net=net
         )
 

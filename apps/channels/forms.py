@@ -3,13 +3,23 @@ from .models import ChannelDevice, ChannelDeviceVolumeTable
 from apps.exist_devices.models import Device
 
 
+class ChannelDeviceAdminForm(ModelForm):
+    class Meta:
+        model = ChannelDevice
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(ChannelDeviceAdminForm, self).__init__(*args, **kwargs)
+        self.fields['device'].queryset = Device.objects.filter(type='channel')
+
+
 class ChannelDeviceForm(ModelForm):
     class Meta:
         model = ChannelDevice
         fields = ('device', 'name', 'phone_number', 'height')
 
-    def __init__(self, **kwargs):
-        super(ChannelDeviceForm, self).__init__(**kwargs)
+    def __init__(self, *args, **kwargs):
+        super(ChannelDeviceForm, self).__init__(*args, **kwargs)
         self.fields['device'].queryset = Device.objects.filter(is_active=False).filter(type='channel')
 
         for visible in self.visible_fields():
@@ -31,8 +41,8 @@ class ChannelDeviceEditForm(ModelForm):
         model = ChannelDevice
         fields = ('device', 'name', 'phone_number', 'height', 'height_conf', 'latitude', 'longitude')
 
-    def __init__(self, **kwargs):
-        super(ChannelDeviceEditForm, self).__init__(**kwargs)
+    def __init__(self, *args, **kwargs):
+        super(ChannelDeviceEditForm, self).__init__(*args, **kwargs)
 
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'w-full mt-3 p-1 border-gray-900 rounded-md ' \
@@ -48,10 +58,9 @@ class ChannelDeviceVolumeForm(ModelForm):
             'six', 'seven', 'eight', 'nine'
         )
 
-    def __init__(self, **kwargs):
-        super(ChannelDeviceVolumeForm, self).__init__(**kwargs)
+    def __init__(self, *args, **kwargs):
+        super(ChannelDeviceVolumeForm, self).__init__(*args, **kwargs)
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'w-32 -mt-1 p-1 border-gray-900 rounded-md ' \
                                                   'focus:border-indigo-600 focus:ring focus:ring-opacity-40' \
                                                   'focus:ring-indigo-500 border-2 border-black border-slate-500'
-
