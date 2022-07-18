@@ -20,6 +20,7 @@ def receive_channel_message(request):
     data = request.data
     h = data.get('h')
     bat = data.get('bat')
+    is_charging = data.get('charging')
     net = data.get('net')
     latitude = data.get('latitude')
     longitude = data.get('longitude')
@@ -29,12 +30,13 @@ def receive_channel_message(request):
 
     device = ChannelDevice.objects.filter(device_id=device_id).first()
 
-    if all((h, bat, net, latitude, longitude, device)):
+    if all((h, bat, is_charging, net, latitude, longitude, device)):
 
         new_message = ChannelMessage.objects.create(
             device=device,
             h=h,
             bat=bat,
+            is_charging=is_charging,
             net=net
         )
 

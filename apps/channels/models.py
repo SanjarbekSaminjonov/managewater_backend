@@ -159,6 +159,12 @@ class ChannelMessage(models.Model):
         verbose_name=_('Battery power (volt)')
     )
 
+    is_charging = models.BooleanField(
+        blank=True,
+        null=True,
+        verbose_name=_('Is charging')
+    )
+
     net = models.SmallIntegerField(
         verbose_name=_('Network quality')
     )

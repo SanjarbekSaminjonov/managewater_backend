@@ -39,4 +39,3 @@ def receive_well_message(request):
         },
         status=HTTP_400_BAD_REQUEST
     )
-
