@@ -13,7 +13,7 @@ class ChannelDeviceAdmin(admin.ModelAdmin):
 
 
 class ChannelMessageAdmin(admin.ModelAdmin):
-    list_display = ('device', 'h', 'water_volume', 'bat', 'is_charging', 'net', 'created_at')
+    list_display = ('device', 'is_sent', 'h', 'water_volume', 'bat', 'is_charging', 'net', 'created_at')
     list_filter = ('device',)
     ordering = ('-created_at',)
 

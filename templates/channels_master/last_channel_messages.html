@@ -62,6 +62,9 @@
                                 {% trans "Network quality" %}
                             </th>
                             <th class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200">
+                                {% trans "Is sent" %}
+                            </th>
+                            <th class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200">
                                 {% trans "Added time" %}
                             </th>
                         </tr>
@@ -86,21 +89,20 @@
                                 </td>
                                 <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                     {% if message.is_charging %}
-                                        <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                            <span aria-hidden=""
-                                                  class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                            <span class="relative">Yes</span>
-                                        </span>
+                                        ✅
                                     {% else %}
-                                        <span class="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                                            <span aria-hidden=""
-                                                  class="absolute inset-0 bg-red-200 opacity-50 rounded-full"></span>
-                                            <span class="relative">No</span>
-                                        </span>
+                                        ⛔
                                     {% endif %}
                                 </td>
                                 <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                     <p class="text-gray-900 whitespace-nowrap">{{ message.net }}</p>
+                                </td>
+                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                    {% if message.is_sent %}
+                                        ✅
+                                    {% else %}
+                                        ⛔
+                                    {% endif %}
                                 </td>
                                 <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                     <p class="text-gray-900 whitespace-nowrap">{{ message.created_at }}</p>
@@ -109,17 +111,6 @@
                         {% endfor %}
                         </tbody>
                     </table>
-{#                    <div class="flex flex-col items-center px-5 py-5 bg-white border-t xs:flex-row xs:justify-between">#}
-{#                        <span class="text-xs text-gray-900 xs:text-sm">Showing 1 to 4 of 50 Entries</span>#}
-{#                        <div class="inline-flex mt-2 xs:mt-0">#}
-{#                            <button class="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-l hover:bg-gray-400">#}
-{#                                Prev#}
-{#                            </button>#}
-{#                            <button class="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-r hover:bg-gray-400">#}
-{#                                Next#}
-{#                            </button>#}
-{#                        </div>#}
-{#                    </div>#}
                 </div>
             </div>
         </div>

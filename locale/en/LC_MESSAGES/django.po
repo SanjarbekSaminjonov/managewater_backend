@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-19 19:12+0500\n"
+"POT-Creation-Date: 2022-07-20 00:36+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,15 +82,17 @@ msgstr ""
 
 #: .\apps\channels\models.py:12 .\apps\channels\models.py:112
 #: .\apps\exist_devices\models.py:38 .\apps\watchers\models.py:12
-#: .\apps\wells\models.py:12
+#: .\apps\wells\models.py:12 .\apps\wells\models.py:136
 msgid "Device"
 msgstr ""
 
 #: .\apps\channels\models.py:18
+#: .\templates\channels_master\channel_device_detail.html:53
 msgid "Ministry ID"
 msgstr ""
 
 #: .\apps\channels\models.py:23
+#: .\templates\channels_master\channel_device_detail.html:57
 msgid "Permission to send data"
 msgstr ""
 
@@ -119,17 +121,20 @@ msgstr ""
 msgid "Height conf (sm)"
 msgstr ""
 
-#: .\apps\channels\models.py:77 .\apps\wells\models.py:37
-#: .\templates\channels_master\channel_device_detail.html:65
+#: .\apps\channels\models.py:77 .\apps\channels\models.py:214
+#: .\apps\wells\models.py:37 .\apps\wells\models.py:142
+#: .\templates\channels_master\channel_device_detail.html:81
 msgid "Latitude of location"
 msgstr ""
 
-#: .\apps\channels\models.py:85 .\apps\wells\models.py:45
-#: .\templates\channels_master\channel_device_detail.html:69
+#: .\apps\channels\models.py:85 .\apps\channels\models.py:222
+#: .\apps\wells\models.py:45 .\apps\wells\models.py:150
+#: .\templates\channels_master\channel_device_detail.html:85
 msgid "Longitude of location"
 msgstr ""
 
-#: .\apps\channels\models.py:104 .\apps\channels\models.py:154
+#: .\apps\channels\models.py:104 .\apps\channels\models.py:153
+#: .\apps\channels\models.py:208
 #: .\templates\channels_master\add_or_edit_device.html:25
 msgid "Channel device"
 msgstr ""
@@ -142,40 +147,54 @@ msgstr ""
 msgid "Tens"
 msgstr ""
 
-#: .\apps\channels\models.py:160
+#: .\apps\channels\models.py:158 .\apps\wells\models.py:78
+#: .\templates\channels_master\last_channel_messages.html:65
+msgid "Is sent"
+msgstr ""
+
+#: .\apps\channels\models.py:164
 msgid "From device to water (sm)"
 msgstr ""
 
-#: .\apps\channels\models.py:168
+#: .\apps\channels\models.py:172
 #: .\templates\channels_master\last_channel_messages.html:53
 msgid "Volume of water (cubic meters/sec)"
 msgstr ""
 
-#: .\apps\channels\models.py:174 .\apps\wells\models.py:99
+#: .\apps\channels\models.py:178 .\apps\wells\models.py:104
 msgid "Battery power (volt)"
 msgstr ""
 
-#: .\apps\channels\models.py:180 .\apps\wells\models.py:105
+#: .\apps\channels\models.py:184 .\apps\wells\models.py:110
 #: .\templates\channels_master\last_channel_messages.html:59
 msgid "Is charging"
 msgstr ""
 
-#: .\apps\channels\models.py:184 .\apps\wells\models.py:111
+#: .\apps\channels\models.py:188 .\apps\wells\models.py:116
 #: .\templates\channels_master\last_channel_messages.html:62
 msgid "Network quality"
 msgstr ""
 
-#: .\apps\channels\models.py:189 .\apps\wells\models.py:116
-#: .\templates\channels_master\last_channel_messages.html:65
+#: .\apps\channels\models.py:193 .\apps\channels\models.py:229
+#: .\apps\wells\models.py:121 .\apps\wells\models.py:157
+#: .\templates\channels_master\last_channel_messages.html:68
 msgid "Added time"
 msgstr ""
 
-#: .\apps\channels\models.py:196
+#: .\apps\channels\models.py:200
 msgid "Channel message"
 msgstr ""
 
-#: .\apps\channels\models.py:197
+#: .\apps\channels\models.py:201
 msgid "Channels messages"
+msgstr ""
+
+#: .\apps\channels\models.py:236
+msgid "Channel movement message"
+msgstr ""
+
+#: .\apps\channels\models.py:237
+msgid "Channels movement messages"
 msgstr ""
 
 #: .\apps\exist_devices\apps.py:8
@@ -242,6 +261,10 @@ msgstr ""
 msgid "Ministry well links"
 msgstr ""
 
+#: .\apps\watchers\apps.py:8
+msgid "Watchers section"
+msgstr ""
+
 #: .\apps\watchers\models.py:18
 msgid "Watcher"
 msgstr ""
@@ -270,32 +293,40 @@ msgstr ""
 msgid "Wells devices"
 msgstr ""
 
-#: .\apps\wells\models.py:79
+#: .\apps\wells\models.py:84
 msgid "Water height (sm)"
 msgstr ""
 
-#: .\apps\wells\models.py:85
+#: .\apps\wells\models.py:90
 msgid "Mineral (gramm/liter)"
 msgstr ""
 
-#: .\apps\wells\models.py:91
+#: .\apps\wells\models.py:96
 msgid "Temperature (Celsius)"
 msgstr ""
 
-#: .\apps\wells\models.py:123
+#: .\apps\wells\models.py:128
 msgid "Well message"
 msgstr ""
 
-#: .\apps\wells\models.py:124
+#: .\apps\wells\models.py:129
 msgid "Wells messages"
 msgstr ""
 
+#: .\apps\wells\models.py:164
+msgid "Well movement message"
+msgstr ""
+
+#: .\apps\wells\models.py:165
+msgid "Wells movement messages"
+msgstr ""
+
 #: .\core\settings.py:112
-msgid "English"
+msgid "Uzbek"
 msgstr ""
 
 #: .\core\settings.py:113
-msgid "Uzbek"
+msgid "English"
 msgstr ""
 
 #: .\templates\auth\login.html:5 .\templates\auth\login.html:17
@@ -342,28 +373,28 @@ msgstr ""
 msgid "Delete device"
 msgstr ""
 
-#: .\templates\channels_master\channel_device_detail.html:53
+#: .\templates\channels_master\channel_device_detail.html:67
 msgid "Full height"
 msgstr ""
 
-#: .\templates\channels_master\channel_device_detail.html:57
+#: .\templates\channels_master\channel_device_detail.html:71
 msgid "Height of water"
 msgstr ""
 
-#: .\templates\channels_master\channel_device_detail.html:61
+#: .\templates\channels_master\channel_device_detail.html:77
 msgid "Height conf"
 msgstr ""
 
-#: .\templates\channels_master\channel_device_detail.html:75
+#: .\templates\channels_master\channel_device_detail.html:91
 msgid "See location on google maps"
 msgstr ""
 
-#: .\templates\channels_master\channel_device_detail.html:94
+#: .\templates\channels_master\channel_device_detail.html:110
 #: .\templates\channels_master\edit_row_volume_table.html:36
 msgid "Water consumption"
 msgstr ""
 
-#: .\templates\channels_master\channel_device_detail.html:98
+#: .\templates\channels_master\channel_device_detail.html:114
 msgid "Manage table"
 msgstr ""
 
@@ -419,11 +450,11 @@ msgstr ""
 msgid "Home Page"
 msgstr ""
 
-#: .\templates\partials\header.html:41
+#: .\templates\partials\header.html:56
 msgid "Log Out"
 msgstr ""
 
-#: .\templates\partials\header.html:50
+#: .\templates\partials\header.html:78
 msgid "Log In"
 msgstr ""
 

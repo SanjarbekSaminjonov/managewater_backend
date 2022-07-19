@@ -10,7 +10,7 @@ class WellDeviceAdmin(admin.ModelAdmin):
 
 
 class WellDeviceMessageAdmin(admin.ModelAdmin):
-    list_display = ('device', 'h', 'mineral', 'temperature', 'bat', 'is_charging', 'net', 'created_at')
+    list_display = ('device', 'is_sent', 'h', 'mineral', 'temperature', 'bat', 'is_charging', 'net', 'created_at')
 
 
 admin.site.register(WellDevice, WellDeviceAdmin)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-19 19:12+0500\n"
+"POT-Creation-Date: 2022-07-20 00:36+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,7 +46,7 @@ msgstr "Telefon raqam"
 
 #: .\apps\accounts\models.py:12
 msgid "A user with that phone number already exists."
-msgstr "Ushbu telefon raqam avvaldan mavjud."
+msgstr "Ushbu telefon raqam allaqachon mavjud."
 
 #: .\apps\accounts\models.py:18
 msgid "Region"
@@ -82,15 +82,17 @@ msgstr "Kanallar qurilmalari bo'limi"
 
 #: .\apps\channels\models.py:12 .\apps\channels\models.py:112
 #: .\apps\exist_devices\models.py:38 .\apps\watchers\models.py:12
-#: .\apps\wells\models.py:12
+#: .\apps\wells\models.py:12 .\apps\wells\models.py:136
 msgid "Device"
 msgstr "Qurilma"
 
 #: .\apps\channels\models.py:18
+#: .\templates\channels_master\channel_device_detail.html:53
 msgid "Ministry ID"
 msgstr "Vazirlik ID raqami"
 
 #: .\apps\channels\models.py:23
+#: .\templates\channels_master\channel_device_detail.html:57
 msgid "Permission to send data"
 msgstr "Ma'lumotlarni jo'natishga ruxsat"
 
@@ -119,17 +121,20 @@ msgstr "Suv sathi balandligi (sm)"
 msgid "Height conf (sm)"
 msgstr "Balandlik sozlamasi (sm)"
 
-#: .\apps\channels\models.py:77 .\apps\wells\models.py:37
-#: .\templates\channels_master\channel_device_detail.html:65
+#: .\apps\channels\models.py:77 .\apps\channels\models.py:214
+#: .\apps\wells\models.py:37 .\apps\wells\models.py:142
+#: .\templates\channels_master\channel_device_detail.html:81
 msgid "Latitude of location"
 msgstr "Manzil latitude qiymati"
 
-#: .\apps\channels\models.py:85 .\apps\wells\models.py:45
-#: .\templates\channels_master\channel_device_detail.html:69
+#: .\apps\channels\models.py:85 .\apps\channels\models.py:222
+#: .\apps\wells\models.py:45 .\apps\wells\models.py:150
+#: .\templates\channels_master\channel_device_detail.html:85
 msgid "Longitude of location"
 msgstr "Manzil longitude qiymati"
 
-#: .\apps\channels\models.py:104 .\apps\channels\models.py:154
+#: .\apps\channels\models.py:104 .\apps\channels\models.py:153
+#: .\apps\channels\models.py:208
 #: .\templates\channels_master\add_or_edit_device.html:25
 msgid "Channel device"
 msgstr "Kanal qurilmasi"
@@ -142,41 +147,55 @@ msgstr "Kanal qurilmalari"
 msgid "Tens"
 msgstr "O'nlik"
 
-#: .\apps\channels\models.py:160
+#: .\apps\channels\models.py:158 .\apps\wells\models.py:78
+#: .\templates\channels_master\last_channel_messages.html:65
+msgid "Is sent"
+msgstr "Ma'lumot jo'natilganmi"
+
+#: .\apps\channels\models.py:164
 msgid "From device to water (sm)"
 msgstr "Suv yuzasidan qurilmagacha bo'lgan balandlik (sm)"
 
-#: .\apps\channels\models.py:168
+#: .\apps\channels\models.py:172
 #: .\templates\channels_master\last_channel_messages.html:53
 msgid "Volume of water (cubic meters/sec)"
 msgstr "Suv hajmi (metr kub/sekund)"
 
-#: .\apps\channels\models.py:174 .\apps\wells\models.py:99
+#: .\apps\channels\models.py:178 .\apps\wells\models.py:104
 msgid "Battery power (volt)"
 msgstr "Batareya quvvati (volt)"
 
-#: .\apps\channels\models.py:180 .\apps\wells\models.py:105
+#: .\apps\channels\models.py:184 .\apps\wells\models.py:110
 #: .\templates\channels_master\last_channel_messages.html:59
 msgid "Is charging"
 msgstr "Quvvat olyaptimi"
 
-#: .\apps\channels\models.py:184 .\apps\wells\models.py:111
+#: .\apps\channels\models.py:188 .\apps\wells\models.py:116
 #: .\templates\channels_master\last_channel_messages.html:62
 msgid "Network quality"
 msgstr "Tarmoq sifati"
 
-#: .\apps\channels\models.py:189 .\apps\wells\models.py:116
-#: .\templates\channels_master\last_channel_messages.html:65
+#: .\apps\channels\models.py:193 .\apps\channels\models.py:229
+#: .\apps\wells\models.py:121 .\apps\wells\models.py:157
+#: .\templates\channels_master\last_channel_messages.html:68
 msgid "Added time"
 msgstr "Qo'shilgan vaqti"
 
-#: .\apps\channels\models.py:196
+#: .\apps\channels\models.py:200
 msgid "Channel message"
 msgstr "Kanal qurilmasi xabari"
 
-#: .\apps\channels\models.py:197
+#: .\apps\channels\models.py:201
 msgid "Channels messages"
 msgstr "Kanal qurilmalari xabarlari"
+
+#: .\apps\channels\models.py:236
+msgid "Channel movement message"
+msgstr "Kanal qurilmasi siljish xabari"
+
+#: .\apps\channels\models.py:237
+msgid "Channels movement messages"
+msgstr "Kanal qurilmalari siljish xabarlari"
 
 #: .\apps\exist_devices\apps.py:8
 msgid "Exist devices"
@@ -242,13 +261,17 @@ msgstr "Vazirlik quduq qurilmasi uchun linki"
 msgid "Ministry well links"
 msgstr "Vazirlik quduq qurilmalari uchun linklari"
 
+#: .\apps\watchers\apps.py:8
+msgid "Watchers section"
+msgstr "Kuzatuvchilar bo'limi"
+
 #: .\apps\watchers\models.py:18
 msgid "Watcher"
 msgstr "Kuzatuvchi"
 
 #: .\apps\watchers\models.py:23
 msgid "Connected at"
-msgstr ""
+msgstr "Bog'langan vaqti"
 
 #: .\apps\watchers\models.py:30
 msgid "Channel watcher"
@@ -270,33 +293,45 @@ msgstr "Quduq qurilmasi"
 msgid "Wells devices"
 msgstr "Quduqlar qurilmalari"
 
-#: .\apps\wells\models.py:79
+#: .\apps\wells\models.py:84
 msgid "Water height (sm)"
 msgstr "Suv balandligi (sm)"
 
-#: .\apps\wells\models.py:85
+#: .\apps\wells\models.py:90
 msgid "Mineral (gramm/liter)"
 msgstr "Mineral miqdori (gramm/litr)"
 
-#: .\apps\wells\models.py:91
+#: .\apps\wells\models.py:96
 msgid "Temperature (Celsius)"
 msgstr "Harorat (Selsiy)"
 
-#: .\apps\wells\models.py:123
+#: .\apps\wells\models.py:128
 msgid "Well message"
 msgstr "Quduq qurilmasi xabari"
 
-#: .\apps\wells\models.py:124
+#: .\apps\wells\models.py:129
 msgid "Wells messages"
 msgstr "Quduqlar qurilmalari xabarlari"
 
-#: .\core\settings.py:112
-msgid "English"
-msgstr "Inglizcha"
+#: .\apps\wells\models.py:164
+#, fuzzy
+#| msgid "Well message"
+msgid "Well movement message"
+msgstr "Quduq qurilmasi siljish xabari"
 
-#: .\core\settings.py:113
+#: .\apps\wells\models.py:165
+#, fuzzy
+#| msgid "Wells messages"
+msgid "Wells movement messages"
+msgstr "Quduqlar qurilmalari siljish xabarlari"
+
+#: .\core\settings.py:112
 msgid "Uzbek"
 msgstr "O'zbekcha"
+
+#: .\core\settings.py:113
+msgid "English"
+msgstr "Inglizcha"
 
 #: .\templates\auth\login.html:5 .\templates\auth\login.html:17
 #: .\templates\auth\login.html:36
@@ -342,28 +377,28 @@ msgstr "Tahrirlash"
 msgid "Delete device"
 msgstr "Qurilmani o'chirish"
 
-#: .\templates\channels_master\channel_device_detail.html:53
+#: .\templates\channels_master\channel_device_detail.html:67
 msgid "Full height"
 msgstr "To'liq balandlik"
 
-#: .\templates\channels_master\channel_device_detail.html:57
+#: .\templates\channels_master\channel_device_detail.html:71
 msgid "Height of water"
 msgstr "Suv sathi balandligi"
 
-#: .\templates\channels_master\channel_device_detail.html:61
+#: .\templates\channels_master\channel_device_detail.html:77
 msgid "Height conf"
 msgstr "Balandlik sozlamasi"
 
-#: .\templates\channels_master\channel_device_detail.html:75
+#: .\templates\channels_master\channel_device_detail.html:91
 msgid "See location on google maps"
 msgstr "Manzilni google xaritada ko'rish"
 
-#: .\templates\channels_master\channel_device_detail.html:94
+#: .\templates\channels_master\channel_device_detail.html:110
 #: .\templates\channels_master\edit_row_volume_table.html:36
 msgid "Water consumption"
 msgstr "Suv iste'moli"
 
-#: .\templates\channels_master\channel_device_detail.html:98
+#: .\templates\channels_master\channel_device_detail.html:114
 msgid "Manage table"
 msgstr "Jadvalni boshqarish"
 
@@ -419,11 +454,11 @@ msgstr "Bosh sahifa"
 msgid "Home Page"
 msgstr "Bosh sahifa"
 
-#: .\templates\partials\header.html:41
+#: .\templates\partials\header.html:56
 msgid "Log Out"
 msgstr "Chiqish"
 
-#: .\templates\partials\header.html:50
+#: .\templates\partials\header.html:78
 msgid "Log In"
 msgstr "Kirish"
 

@@ -150,8 +150,12 @@ class ChannelMessage(models.Model):
     device = models.ForeignKey(
         to=ChannelDevice,
         on_delete=models.CASCADE,
-        related_name='messages',
         verbose_name=_('Channel device')
+    )
+
+    is_sent = models.BooleanField(
+        default=False,
+        verbose_name=_('Is sent')
     )
 
     h = models.DecimalField(
@@ -195,3 +199,39 @@ class ChannelMessage(models.Model):
     class Meta:
         verbose_name = _('Channel message')
         verbose_name_plural = _('Channels messages')
+
+
+class ChannelMovement(models.Model):
+    device = models.ForeignKey(
+        to=ChannelDevice,
+        on_delete=models.CASCADE,
+        verbose_name=_('Channel device')
+    )
+
+    latitude = models.DecimalField(
+        max_digits=9,
+        decimal_places=6,
+        verbose_name=_('Latitude of location'),
+        blank=True,
+        null=True
+    )
+
+    longitude = models.DecimalField(
+        max_digits=9,
+        decimal_places=6,
+        verbose_name=_('Longitude of location'),
+        blank=True,
+        null=True
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name=_('Added time')
+    )
+
+    def __str__(self):
+        return self.device.name
+
+    class Meta:
+        verbose_name = _('Channel movement message')
+        verbose_name_plural = _('Channels movement messages')

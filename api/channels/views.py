@@ -26,7 +26,7 @@ def receive_channel_message(request):
     longitude = data.get('longitude')
     device_id = data.get('device_id')
 
-    re_settings = data.get('re_settings', False)
+    re_settings = data.get('re_settings', 0)
 
     device = ChannelDevice.objects.filter(device_id=device_id).first()
 
@@ -40,7 +40,7 @@ def receive_channel_message(request):
             net=net
         )
 
-        if re_settings:
+        if re_settings and not bool(device.full_height):
             device.full_height = device.height + decimal.Decimal(new_message.h)
         device.latitude = latitude
         device.longitude = longitude

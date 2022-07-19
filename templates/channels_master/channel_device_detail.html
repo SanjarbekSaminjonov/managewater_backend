@@ -50,11 +50,27 @@
                                 <td class="px-6 py-4 text-gray-500 border-b">{{ selected_device.phone_number }}</td>
                             </tr>
                             <tr class="hover:bg-gray-200">
+                                <td class="px-6 py-4 text-lg text-gray-700 border-b">{% trans "Ministry ID" %}</td>
+                                <td class="px-6 py-4 text-gray-500 border-b">{{ selected_device.ministry_id }}</td>
+                            </tr>
+                            <tr class="hover:bg-gray-200">
+                                <td class="px-6 py-4 text-lg text-gray-700 border-b">{% trans "Permission to send data" %}</td>
+                                <td class="px-6 py-4 text-gray-500 border-b">
+                                    {% if selected_device.permission_to_send %}
+                                        ✅
+                                    {% else %}
+                                        ⛔
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-200">
                                 <td class="px-6 py-4 text-lg text-gray-700 border-b">{% trans "Full height" %} (sm)</td>
                                 <td class="px-6 py-4 text-gray-500 border-b">{{ selected_device.full_height }}</td>
                             </tr>
                             <tr class="hover:bg-gray-200">
-                                <td class="px-6 py-4 text-lg text-gray-700 border-b">{% trans "Height of water" %} (sm)</td>
+                                <td class="px-6 py-4 text-lg text-gray-700 border-b">{% trans "Height of water" %}
+                                    (sm)
+                                </td>
                                 <td class="px-6 py-4 text-gray-500 border-b">{{ selected_device.height }}</td>
                             </tr>
                             <tr class="hover:bg-gray-200">
