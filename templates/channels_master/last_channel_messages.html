@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    {{ title }}
+{% endblock page_title %}
+
+
+{% block content %}
+    <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
+        <div class="container mx-auto px-6 py-4">
+
+            <a href="{% url 'device_detail' device_id %}"
+               class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-black rounded-md hover:bg-neutral-500 focus:outline-none focus:bg-indigo-500">
+                Back
+            </a>
+
+            {% if form %}
+                <form method="post" class="mt-6">
+                    {% csrf_token %}
+                    <div class="grid grid-cols-2 gap-6 mt-4 sm:grid-cols-2">
+                        {{ form }}
+                    </div>
+
+                    <div class="flex justify-end mt-4">
+                        <button type="submit"
+                                class="px-4 py-2 text-gray-200 bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
+                            Save
+                        </button>
+                    </div>
+
+                </form>
+            {% endif %}
+
+
+            <h2 class="text-2xl text-center font-semibold leading-tight text-gray-700">
+                Messages came from device
+            </h2>
+
+
+            <div class="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
+                <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
+                    <table class="min-w-full leading-normal">
+                        <thead>
+                        <tr>
+                            <th class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200">
+                                Message ID
+                            </th>
+                            <th class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200">
+                                From device to water (sm)
+                            </th>
+                            <th class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200">
+                                Volume of water (cubic meters/sec)
+                            </th>
+                            <th class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200">
+                                Battery power (volt)
+                            </th>
+                            <th class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200">
+                                Is charging
+                            </th>
+                            <th class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200">
+                                Network quality
+                            </th>
+                            <th class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200">
+                                Added time
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for message in selected_device_messages %}
+                            <tr>
+                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                    <p class="text-gray-900 whitespace-nowrap"><b>{{ message.id }}</b></p>
+                                </td>
+                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                    <p class="text-gray-900 whitespace-nowrap">{{ message.h }} sm</p>
+                                </td>
+                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                    <p class="text-gray-900 whitespace-nowrap">
+                                        {{ message.water_volume }}
+                                        m<sup>3</sup>/s
+                                    </p>
+                                </td>
+                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                    <p class="text-gray-900 whitespace-nowrap">{{ message.bat }} volt</p>
+                                </td>
+                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                    {% if message.is_charging %}
+                                        <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                                            <span aria-hidden=""
+                                                  class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+                                            <span class="relative">Yes</span>
+                                        </span>
+                                    {% else %}
+                                        <span class="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
+                                            <span aria-hidden=""
+                                                  class="absolute inset-0 bg-red-200 opacity-50 rounded-full"></span>
+                                            <span class="relative">No</span>
+                                        </span>
+                                    {% endif %}
+                                </td>
+                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                    <p class="text-gray-900 whitespace-nowrap">{{ message.net }}</p>
+                                </td>
+                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                    <p class="text-gray-900 whitespace-nowrap">{{ message.created_at }}</p>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+{#                    <div class="flex flex-col items-center px-5 py-5 bg-white border-t xs:flex-row xs:justify-between">#}
+{#                        <span class="text-xs text-gray-900 xs:text-sm">Showing 1 to 4 of 50 Entries</span>#}
+{#                        <div class="inline-flex mt-2 xs:mt-0">#}
+{#                            <button class="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-l hover:bg-gray-400">#}
+{#                                Prev#}
+{#                            </button>#}
+{#                            <button class="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-r hover:bg-gray-400">#}
+{#                                Next#}
+{#                            </button>#}
+{#                        </div>#}
+{#                    </div>#}
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+{% endblock content %}

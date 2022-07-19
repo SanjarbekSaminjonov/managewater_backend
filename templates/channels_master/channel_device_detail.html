@@ -7,19 +7,22 @@
 {% block content %}
     <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
         <div class="container mx-auto px-6 py-4">
-            <div>
+            <div class="flex flex-wrap">
                 <a href="{% url 'master_dashboard' %}"
-                   class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-black rounded-md hover:bg-neutral-500 focus:outline-none focus:bg-indigo-500">
+                   class="px-4 mx-1 my-1 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-black rounded-md hover:bg-neutral-500 focus:outline-none focus:bg-indigo-500">
                     Back </a>
                 <a href="{% url 'volume_table' selected_device.device_id %}"
-                   class="px-4 ml-3 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">
+                   class="px-4 mx-1 my-1 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">
                     Volume table </a>
+                <a href="{% url 'last_messages' selected_device.device_id %}"
+                   class="px-4 mx-1 my-1 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">
+                    See messages </a>
                 <a href="{% url 'edit_channel_device_data' selected_device.device_id %}"
-                   class="px-4 ml-3 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">
+                   class="px-4 mx-1 my-1 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">
                     Edit </a>
                 <a href="{% url 'delete_channel_device' selected_device.device_id %}"
                    onclick="return confirm('Are you sure?')"
-                   class="px-4 ml-3 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:bg-red-600">
+                   class="px-4 mx-1 my-1 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:bg-red-600">
                     Delete device</a>
             </div>
             {% if selected_device %}
@@ -44,6 +47,10 @@
                             <tr class="hover:bg-gray-200">
                                 <td class="px-6 py-4 text-lg text-gray-700 border-b">Phone number</td>
                                 <td class="px-6 py-4 text-gray-500 border-b">{{ selected_device.phone_number }}</td>
+                            </tr>
+                            <tr class="hover:bg-gray-200">
+                                <td class="px-6 py-4 text-lg text-gray-700 border-b">Full height (sm)</td>
+                                <td class="px-6 py-4 text-gray-500 border-b">{{ selected_device.full_height }}</td>
                             </tr>
                             <tr class="hover:bg-gray-200">
                                 <td class="px-6 py-4 text-lg text-gray-700 border-b">Height of water (sm)</td>

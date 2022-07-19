@@ -12,9 +12,14 @@ urlpatterns = [
         name='edit_channel_device_data'
     ),
     path(
-        'detail/<str:device_id>/volume_table/',
+        'detail/<str:device_id>/volume-table/',
         views.volume_table,
         name='volume_table'
+    ),
+    path(
+        'detail/<str:device_id>/last-messages/',
+        views.last_messages,
+        name='last_messages'
     ),
     path(
         'detail/<str:device_id>/new/',

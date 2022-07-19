@@ -1,0 +1,51 @@
+<header class="flex items-center justify-between px-6 py-4 bg-white border-b-4 border-indigo-600">
+
+    <div class="flex items-center hover:bg-gray-100 block lg:hidden">
+        <button class="text-gray-500 focus:outline-none lg:hidden" @click="isNavbarOpen = !isNavbarOpen">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 6H20M4 12H20M4 18H11" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"></path>
+            </svg>
+        </button>
+    </div>
+
+    {% if user.is_authenticated %}
+
+        <div class="flex items-center">
+            <div class="relative">
+                <button class="relative z-10 block w-12 h-12 overflow-hidden rounded-full shadow focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-full w-full" viewBox="0 0 20 20"
+                         fill="currentColor">
+                        <path fill-rule="evenodd"
+                              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
+                              clip-rule="evenodd">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="pl-3">
+                <p class="font-bold text-2xl">
+                    {% if user.first_name and user.last_name %}
+                        {{ user.first_name }} {{ user.last_name }}
+                    {% else %}
+                        {{ user.username }}
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+        <div>
+            <a href="{% url 'logout' %}"
+               class="block rounded px-4 py-2 text-sm font-bold text-gray-700 hover:bg-indigo-600 hover:text-white">Log
+                Out</a>
+        </div>
+
+    {% else %}
+        <div></div>
+        <div>
+            <a href="{% url 'login' %}"
+               class="block rounded px-4 py-2 text-sm hover:text-gray-700 bg-indigo-600 text-white">Log
+                In</a>
+        </div>
+    {% endif %}
+
+</header>

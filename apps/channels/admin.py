@@ -5,8 +5,11 @@ from .forms import ChannelDeviceAdminForm
 
 class ChannelDeviceAdmin(admin.ModelAdmin):
     form = ChannelDeviceAdminForm
-    list_display = ('name', 'device', 'user', 'phone_number', 'full_height', 'height', 'height_conf')
-    search_fields = ('name', 'phone_number')
+    list_display = (
+        'name', 'device', 'ministry_id', 'permission_to_send',
+        'user', 'phone_number', 'full_height', 'height', 'height_conf'
+    )
+    search_fields = ('name', 'phone_number', 'ministry_id')
 
 
 class ChannelMessageAdmin(admin.ModelAdmin):

@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from .forms import ChannelDeviceForm, ChannelDeviceEditForm, ChannelDeviceVolumeForm
-from .models import ChannelDevice, ChannelDeviceVolumeTable
+from .models import ChannelDevice, ChannelMessage, ChannelDeviceVolumeTable
 
 
 @login_required(login_url='login')
@@ -133,3 +133,15 @@ def volume_table(request, device_id):
     }
 
     return render(request, 'channels_master/edit_row_volume_table.html', context)
+
+
+@login_required(login_url='login')
+def last_messages(request, device_id):
+    context = {
+        'title': 'Device rows',
+        'device_id': device_id,
+        'selected_device_messages':
+            ChannelMessage.objects.filter(device_id=device_id).order_by('-created_at')[:10]
+    }
+
+    return render(request, 'channels_master/last_channel_messages.html', context)

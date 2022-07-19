@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'apps.channels',
     'apps.wells',
     'apps.watchers',
+    'apps.ministry_links',
 ]
 
 MIDDLEWARE = [
