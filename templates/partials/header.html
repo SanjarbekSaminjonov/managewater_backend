@@ -11,6 +11,18 @@
         </button>
     </div>
 
+    {#    <ul class="languages flex">#}
+    {#        {% for language in languages %}#}
+    {#            <li class="text-sm mr-2">#}
+    {#                <a class="uppercase" href="/{{ language.code }}/"#}
+    {#                        {% if language.code == CURRENT_LANGUAGE %} class="font-bold"{% endif %}>#}
+    {#                    {{ language.name_local }}#}
+    {#                </a>#}
+    {#            </li>#}
+    {#        {% endfor %}#}
+    {#    </ul>#}
+
+
     {% if user.is_authenticated %}
 
         <div class="flex items-center">
@@ -35,21 +47,48 @@
                 </p>
             </div>
         </div>
-        <div>
-            <a href="{% url 'logout' %}"
-               class="block rounded px-4 py-2 text-sm font-bold text-gray-700 hover:bg-indigo-600 hover:text-white">
-                {% trans "Log Out" %}
-            </a>
-        </div>
+
+
+        <ul class="flex justify-center items-center">
+            <li>
+                <a href="{% url 'logout' %}"
+                   class="block rounded px-4 py-2 text-sm font-bold text-gray-700 hover:bg-indigo-600 hover:text-white">
+                    {% trans "Log Out" %}
+                </a>
+            </li>
+            <li class="ml-3">
+                <a href="/uz">
+                    UZ
+                </a>
+            </li>
+            <li class="ml-3">
+                <a href="/en">
+                    EN
+                </a>
+            </li>
+        </ul>
+
 
     {% else %}
         <div></div>
-        <div>
-            <a href="{% url 'login' %}"
-               class="block rounded px-4 py-2 text-sm hover:text-gray-700 bg-indigo-600 text-white">
-                {% trans "Log In" %}
-            </a>
-        </div>
+        <ul class="flex justify-center items-center">
+            <li>
+                <a href="{% url 'login' %}"
+                   class="block rounded px-4 py-2 text-sm hover:text-gray-700 bg-indigo-600 text-white">
+                    {% trans "Log In" %}
+                </a>
+            </li>
+            <li class="ml-3">
+                <a href="/uz">
+                    UZ
+                </a>
+            </li>
+            <li class="ml-3">
+                <a href="/en">
+                    EN
+                </a>
+            </li>
+        </ul>
     {% endif %}
 
 </header>

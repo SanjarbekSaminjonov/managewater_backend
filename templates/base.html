@@ -16,6 +16,10 @@
 
 <body x-data="{isNavbarOpen: false}">
 
+{% get_current_language as CURRENT_LANGUAGE %}
+{% get_available_languages as AVAILABLE_LANGUAGES %}
+{% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+
 <div class="flex h-screen bg-gray-200 font-roboto">
 
     {% include 'partials/sidebar.html' %}

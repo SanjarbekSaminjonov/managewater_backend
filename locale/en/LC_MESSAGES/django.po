@@ -1,0 +1,432 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-19 19:12+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\apps\accounts\admin.py:27
+msgid "Additional information"
+msgstr ""
+
+#: .\apps\accounts\admin.py:44
+msgid "Carwon Group Admin"
+msgstr ""
+
+#: .\apps\accounts\admin.py:45
+msgid "Carwon Admin Portal"
+msgstr ""
+
+#: .\apps\accounts\admin.py:46
+msgid "Welcome to Manage Water Administration"
+msgstr ""
+
+#: .\apps\accounts\apps.py:8
+msgid "Accounts"
+msgstr ""
+
+#: .\apps\accounts\models.py:10 .\apps\channels\models.py:51
+#: .\apps\wells\models.py:31
+#: .\templates\channels_master\channel_device_detail.html:49
+msgid "Phone number"
+msgstr ""
+
+#: .\apps\accounts\models.py:12
+msgid "A user with that phone number already exists."
+msgstr ""
+
+#: .\apps\accounts\models.py:18
+msgid "Region"
+msgstr ""
+
+#: .\apps\accounts\models.py:25
+msgid "City"
+msgstr ""
+
+#: .\apps\accounts\models.py:32
+msgid "Organization name"
+msgstr ""
+
+#: .\apps\accounts\models.py:39
+msgid "Telegram ID"
+msgstr ""
+
+#: .\apps\accounts\models.py:46
+msgid "Is channels_master"
+msgstr ""
+
+#: .\apps\accounts\models.py:53
+msgid "User"
+msgstr ""
+
+#: .\apps\accounts\models.py:54
+msgid "Users"
+msgstr ""
+
+#: .\apps\channels\apps.py:8
+msgid "Channels Data"
+msgstr ""
+
+#: .\apps\channels\models.py:12 .\apps\channels\models.py:112
+#: .\apps\exist_devices\models.py:38 .\apps\watchers\models.py:12
+#: .\apps\wells\models.py:12
+msgid "Device"
+msgstr ""
+
+#: .\apps\channels\models.py:18
+msgid "Ministry ID"
+msgstr ""
+
+#: .\apps\channels\models.py:23
+msgid "Permission to send data"
+msgstr ""
+
+#: .\apps\channels\models.py:28 .\apps\wells\models.py:17
+msgid "Name"
+msgstr ""
+
+#: .\apps\channels\models.py:37 .\apps\wells\models.py:26
+#: .\templates\channels_master\channel_device_detail.html:45
+msgid "Belong to"
+msgstr ""
+
+#: .\apps\channels\models.py:46
+msgid "Master"
+msgstr ""
+
+#: .\apps\channels\models.py:58
+msgid "Full height (sm)"
+msgstr ""
+
+#: .\apps\channels\models.py:65
+msgid "Height of water (sm)"
+msgstr ""
+
+#: .\apps\channels\models.py:71
+msgid "Height conf (sm)"
+msgstr ""
+
+#: .\apps\channels\models.py:77 .\apps\wells\models.py:37
+#: .\templates\channels_master\channel_device_detail.html:65
+msgid "Latitude of location"
+msgstr ""
+
+#: .\apps\channels\models.py:85 .\apps\wells\models.py:45
+#: .\templates\channels_master\channel_device_detail.html:69
+msgid "Longitude of location"
+msgstr ""
+
+#: .\apps\channels\models.py:104 .\apps\channels\models.py:154
+#: .\templates\channels_master\add_or_edit_device.html:25
+msgid "Channel device"
+msgstr ""
+
+#: .\apps\channels\models.py:105 .\templates\partials\sidebar.html:37
+msgid "Channel devices"
+msgstr ""
+
+#: .\apps\channels\models.py:117
+msgid "Tens"
+msgstr ""
+
+#: .\apps\channels\models.py:160
+msgid "From device to water (sm)"
+msgstr ""
+
+#: .\apps\channels\models.py:168
+#: .\templates\channels_master\last_channel_messages.html:53
+msgid "Volume of water (cubic meters/sec)"
+msgstr ""
+
+#: .\apps\channels\models.py:174 .\apps\wells\models.py:99
+msgid "Battery power (volt)"
+msgstr ""
+
+#: .\apps\channels\models.py:180 .\apps\wells\models.py:105
+#: .\templates\channels_master\last_channel_messages.html:59
+msgid "Is charging"
+msgstr ""
+
+#: .\apps\channels\models.py:184 .\apps\wells\models.py:111
+#: .\templates\channels_master\last_channel_messages.html:62
+msgid "Network quality"
+msgstr ""
+
+#: .\apps\channels\models.py:189 .\apps\wells\models.py:116
+#: .\templates\channels_master\last_channel_messages.html:65
+msgid "Added time"
+msgstr ""
+
+#: .\apps\channels\models.py:196
+msgid "Channel message"
+msgstr ""
+
+#: .\apps\channels\models.py:197
+msgid "Channels messages"
+msgstr ""
+
+#: .\apps\exist_devices\apps.py:8
+msgid "Exist devices"
+msgstr ""
+
+#: .\apps\exist_devices\models.py:7
+msgid "Water Channel"
+msgstr ""
+
+#: .\apps\exist_devices\models.py:8
+msgid "Water Well"
+msgstr ""
+
+#: .\apps\exist_devices\models.py:14
+msgid "ID"
+msgstr ""
+
+#: .\apps\exist_devices\models.py:20
+msgid "Type of device"
+msgstr ""
+
+#: .\apps\exist_devices\models.py:25
+msgid "Added at"
+msgstr ""
+
+#: .\apps\exist_devices\models.py:30
+msgid "Is active"
+msgstr ""
+
+#: .\apps\exist_devices\models.py:39
+msgid "Devices"
+msgstr ""
+
+#: .\apps\ministry_links\apps.py:8
+msgid "Ministry links"
+msgstr ""
+
+#: .\apps\ministry_links\models.py:8 .\apps\ministry_links\models.py:32
+msgid "Full path to send json"
+msgstr ""
+
+#: .\apps\ministry_links\models.py:13 .\apps\ministry_links\models.py:37
+msgid "Updated date and time"
+msgstr ""
+
+#: .\apps\ministry_links\models.py:18 .\apps\ministry_links\models.py:42
+msgid "Added date and time"
+msgstr ""
+
+#: .\apps\ministry_links\models.py:25
+msgid "Ministry channel link"
+msgstr ""
+
+#: .\apps\ministry_links\models.py:26
+msgid "Ministry channel links"
+msgstr ""
+
+#: .\apps\ministry_links\models.py:49
+msgid "Ministry well link"
+msgstr ""
+
+#: .\apps\ministry_links\models.py:50
+msgid "Ministry well links"
+msgstr ""
+
+#: .\apps\watchers\models.py:18
+msgid "Watcher"
+msgstr ""
+
+#: .\apps\watchers\models.py:23
+msgid "Connected at"
+msgstr ""
+
+#: .\apps\watchers\models.py:30
+msgid "Channel watcher"
+msgstr ""
+
+#: .\apps\watchers\models.py:31
+msgid "Channel watchers"
+msgstr ""
+
+#: .\apps\wells\apps.py:8
+msgid "Wells data"
+msgstr ""
+
+#: .\apps\wells\models.py:64 .\apps\wells\models.py:73
+msgid "Well device"
+msgstr ""
+
+#: .\apps\wells\models.py:65
+msgid "Wells devices"
+msgstr ""
+
+#: .\apps\wells\models.py:79
+msgid "Water height (sm)"
+msgstr ""
+
+#: .\apps\wells\models.py:85
+msgid "Mineral (gramm/liter)"
+msgstr ""
+
+#: .\apps\wells\models.py:91
+msgid "Temperature (Celsius)"
+msgstr ""
+
+#: .\apps\wells\models.py:123
+msgid "Well message"
+msgstr ""
+
+#: .\apps\wells\models.py:124
+msgid "Wells messages"
+msgstr ""
+
+#: .\core\settings.py:112
+msgid "English"
+msgstr ""
+
+#: .\core\settings.py:113
+msgid "Uzbek"
+msgstr ""
+
+#: .\templates\auth\login.html:5 .\templates\auth\login.html:17
+#: .\templates\auth\login.html:36
+msgid "Login"
+msgstr ""
+
+#: .\templates\auth\login.html:30
+msgid "Password"
+msgstr ""
+
+#: .\templates\channels_master\add_or_edit_device.html:16
+#: .\templates\channels_master\add_or_edit_device.html:20
+#: .\templates\channels_master\channel_device_detail.html:14
+#: .\templates\channels_master\edit_row_volume_table.html:14
+#: .\templates\channels_master\last_channel_messages.html:15
+msgid "Back"
+msgstr ""
+
+#: .\templates\channels_master\add_or_edit_device.html:36
+#: .\templates\channels_master\edit_row_volume_table.html:26
+#: .\templates\channels_master\last_channel_messages.html:28
+msgid "Save"
+msgstr ""
+
+#: .\templates\channels_master\channel_device_detail.html:5
+msgid "Detail of device"
+msgstr ""
+
+#: .\templates\channels_master\channel_device_detail.html:17
+msgid "Volume table"
+msgstr ""
+
+#: .\templates\channels_master\channel_device_detail.html:20
+msgid "See messages"
+msgstr ""
+
+#: .\templates\channels_master\channel_device_detail.html:23
+#: .\templates\channels_master\edit_row_volume_table.html:126
+msgid "Edit"
+msgstr ""
+
+#: .\templates\channels_master\channel_device_detail.html:27
+msgid "Delete device"
+msgstr ""
+
+#: .\templates\channels_master\channel_device_detail.html:53
+msgid "Full height"
+msgstr ""
+
+#: .\templates\channels_master\channel_device_detail.html:57
+msgid "Height of water"
+msgstr ""
+
+#: .\templates\channels_master\channel_device_detail.html:61
+msgid "Height conf"
+msgstr ""
+
+#: .\templates\channels_master\channel_device_detail.html:75
+msgid "See location on google maps"
+msgstr ""
+
+#: .\templates\channels_master\channel_device_detail.html:94
+#: .\templates\channels_master\edit_row_volume_table.html:36
+msgid "Water consumption"
+msgstr ""
+
+#: .\templates\channels_master\channel_device_detail.html:98
+msgid "Manage table"
+msgstr ""
+
+#: .\templates\channels_master\edit_row_volume_table.html:40
+msgid "Add new row"
+msgstr ""
+
+#: .\templates\channels_master\edit_row_volume_table.html:130
+msgid "Delete"
+msgstr ""
+
+#: .\templates\channels_master\index.html:5
+msgid "Master dashboard"
+msgstr ""
+
+#: .\templates\channels_master\index.html:15
+msgid "Devices you configure"
+msgstr ""
+
+#: .\templates\channels_master\index.html:52
+msgid "No devices you configure"
+msgstr ""
+
+#: .\templates\channels_master\last_channel_messages.html:37
+msgid "Messages came from device"
+msgstr ""
+
+#: .\templates\channels_master\last_channel_messages.html:47
+msgid "Message ID"
+msgstr ""
+
+#: .\templates\channels_master\last_channel_messages.html:50
+msgid "From device to water"
+msgstr ""
+
+#: .\templates\channels_master\last_channel_messages.html:56
+msgid "Battery power"
+msgstr ""
+
+#: .\templates\home\404.html:5
+msgid "Not Found"
+msgstr ""
+
+#: .\templates\home\404.html:13
+msgid "Not Found - 404"
+msgstr ""
+
+#: .\templates\home\index.html:5
+msgid "Home"
+msgstr ""
+
+#: .\templates\home\index.html:12
+msgid "Home Page"
+msgstr ""
+
+#: .\templates\partials\header.html:41
+msgid "Log Out"
+msgstr ""
+
+#: .\templates\partials\header.html:50
+msgid "Log In"
+msgstr ""
+
+#: .\templates\partials\sidebar.html:47
+msgid "Add channel device"
+msgstr ""

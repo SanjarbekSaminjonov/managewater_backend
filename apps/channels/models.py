@@ -106,18 +106,26 @@ class ChannelDevice(models.Model):
 
 
 class ChannelDeviceVolumeTable(models.Model):
-    device = models.ForeignKey(to=ChannelDevice, on_delete=models.CASCADE)
-    tens = models.IntegerField(default=0)
-    zero = models.FloatField(default=0)
-    one = models.FloatField(default=0)
-    two = models.FloatField(default=0)
-    three = models.FloatField(default=0)
-    four = models.FloatField(default=0)
-    five = models.FloatField(default=0)
-    six = models.FloatField(default=0)
-    seven = models.FloatField(default=0)
-    eight = models.FloatField(default=0)
-    nine = models.FloatField(default=0)
+    device = models.ForeignKey(
+        to=ChannelDevice,
+        on_delete=models.CASCADE,
+        verbose_name=_('Device')
+    )
+
+    tens = models.IntegerField(
+        default=0,
+        verbose_name=_('Tens')
+                               )
+    zero = models.FloatField(default=0, verbose_name='0')
+    one = models.FloatField(default=0, verbose_name='1')
+    two = models.FloatField(default=0, verbose_name='2')
+    three = models.FloatField(default=0, verbose_name='3')
+    four = models.FloatField(default=0, verbose_name='4')
+    five = models.FloatField(default=0, verbose_name='5')
+    six = models.FloatField(default=0, verbose_name='6')
+    seven = models.FloatField(default=0, verbose_name='7')
+    eight = models.FloatField(default=0, verbose_name='8')
+    nine = models.FloatField(default=0, verbose_name='9')
 
     def __str__(self):
         return f'{self.id} / {self.device} / {self.tens}'
