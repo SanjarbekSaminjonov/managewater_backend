@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block page_title %}
     {{ title }}
@@ -10,7 +11,7 @@
         <div class="container mx-auto px-6 py-4">
             <a href="{% url 'device_detail' device_id %}"
                class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-black rounded-md hover:bg-neutral-500 focus:outline-none focus:bg-indigo-500">
-                Back
+                {% trans "Back" %}
             </a>
             {% if form %}
                 <form method="post" class="mt-6">
@@ -22,7 +23,7 @@
                     <div class="flex justify-end mt-4">
                         <button type="submit"
                                 class="px-4 py-2 text-gray-200 bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
-                            Save
+                            {% trans "Save" %}
                         </button>
                     </div>
 
@@ -32,11 +33,11 @@
             <div class="flex justify-between items-center mt-6">
                 <span></span>
                 <h2 class="text-2xl font-semibold leading-tight text-gray-700">
-                    <span>m<sup>3</sup>/s</span> Water consumption (Suv sarfi)
+                    <span>m<sup>3</sup>/s</span> {% trans "Water consumption" %}
                 </h2>
                 <a href="{% url 'add_new_row_for_volume_table' device_id %}"
                    class="px-3 py-2 font-medium text-white text-sm capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">
-                    Add new row
+                    {% trans "Add new row" %}
                 </a>
             </div>
 
@@ -122,11 +123,11 @@
                                 <td class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap">
                                     <a href="{% url 'edit_new_row_for_volume_table' row.id %}"
                                        class="text-indigo-600 hover:text-indigo-900">
-                                        Edit
+                                        {% trans "Edit" %}
                                     </a> |
                                     <a href="{% url 'delete_new_row_for_volume_table' row.id %}"
                                        class="text-red-600 hover:text-red-900">
-                                        Delete
+                                        {% trans "Delete" %}
                                     </a>
                                 </td>
                             </tr>

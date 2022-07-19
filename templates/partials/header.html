@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <header class="flex items-center justify-between px-6 py-4 bg-white border-b-4 border-indigo-600">
 
     <div class="flex items-center hover:bg-gray-100 block lg:hidden">
@@ -35,16 +37,18 @@
         </div>
         <div>
             <a href="{% url 'logout' %}"
-               class="block rounded px-4 py-2 text-sm font-bold text-gray-700 hover:bg-indigo-600 hover:text-white">Log
-                Out</a>
+               class="block rounded px-4 py-2 text-sm font-bold text-gray-700 hover:bg-indigo-600 hover:text-white">
+                {% trans "Log Out" %}
+            </a>
         </div>
 
     {% else %}
         <div></div>
         <div>
             <a href="{% url 'login' %}"
-               class="block rounded px-4 py-2 text-sm hover:text-gray-700 bg-indigo-600 text-white">Log
-                In</a>
+               class="block rounded px-4 py-2 text-sm hover:text-gray-700 bg-indigo-600 text-white">
+                {% trans "Log In" %}
+            </a>
         </div>
     {% endif %}
 

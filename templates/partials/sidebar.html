@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <div class="flex">
     <div class="hidden fixed inset-0 z-20 transition-opacity bg-black opacity-50 lg:hidden"
          :class="{'hidden': !isNavbarOpen, 'block': isNavbarOpen}"
@@ -32,7 +34,7 @@
                           fill="currentColor">
                     </path>
                 </svg>
-                <span class="mx-4">Channel devices</span>
+                <span class="mx-4">{% trans "Channel devices" %}</span>
             </a>
 
             <a href="{% url 'add_new_device' %}"
@@ -42,7 +44,7 @@
                           d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
                           clip-rule="evenodd"></path>
                 </svg>
-                <span class="mx-4">Add channel device</span>
+                <span class="mx-4">{% trans "Add channel device" %}</span>
             </a>
         </nav>
     </div>
