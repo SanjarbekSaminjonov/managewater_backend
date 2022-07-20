@@ -47,7 +47,7 @@ def receive_channel_message(request):
         device.save()
 
         if device.full_height is not None:
-            water_height = device.full_height + device.height_conf - decimal.Decimal(new_message.h)
+            water_height = round(device.full_height + device.height_conf - decimal.Decimal(new_message.h))
             water_height_ones = water_height % 10
             water_height_tens = water_height - water_height_ones
 
