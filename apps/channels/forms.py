@@ -3,16 +3,6 @@ from .models import ChannelDevice, ChannelDeviceVolumeTable
 from apps.exist_devices.models import Device
 
 
-class ChannelDeviceAdminForm(ModelForm):
-    class Meta:
-        model = ChannelDevice
-        fields = '__all__'
-
-    def __init__(self, *args, **kwargs):
-        super(ChannelDeviceAdminForm, self).__init__(*args, **kwargs)
-        self.fields['device'].queryset = Device.objects.filter(type='channel')
-
-
 class ChannelDeviceForm(ModelForm):
     class Meta:
         model = ChannelDevice
@@ -39,7 +29,10 @@ class ChannelDeviceForm(ModelForm):
 class ChannelDeviceEditForm(ModelForm):
     class Meta:
         model = ChannelDevice
-        fields = ('name', 'phone_number', 'ministry_id', 'permission_to_send', 'full_height', 'height', 'height_conf', 'latitude', 'longitude')
+        fields = (
+            'name', 'phone_number', 'ministry_id', 'permission_to_send',
+            'full_height', 'height', 'height_conf', 'latitude', 'longitude'
+        )
 
     def __init__(self, *args, **kwargs):
         super(ChannelDeviceEditForm, self).__init__(*args, **kwargs)
